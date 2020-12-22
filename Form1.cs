@@ -29,5 +29,10 @@ namespace AlgoVisualizer
                 listBox.Items.Add(textBox.Text);
             }
         }
+
+        private void StartSort_Click(object sender, EventArgs e)
+        {
+            this.chart1.Series["Index"].Points.AddXY("bill", 1000);
+        }
     }
 }
