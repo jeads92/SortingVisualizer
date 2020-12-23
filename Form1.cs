@@ -22,17 +22,21 @@ namespace AlgoVisualizer
 
         }
 
-        private void BigClicken(object sender, EventArgs e)
+        public void DrawRectangleInt(PaintEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(textBox.Text) && !listBox.Items.Contains(textBox))
-            {
-                listBox.Items.Add(textBox.Text);
-            }
+
+            // Create pen.
+            Pen blackPen = new Pen(Color.Black, 3);
+
+            // Create location and size of rectangle.
+            int x = 0;
+            int y = 0;
+            int width = 200;
+            int height = 200;
+
+            // Draw rectangle to screen.
+            e.Graphics.DrawRectangle(blackPen, x, y, width, height);
         }
 
-        private void StartSort_Click(object sender, EventArgs e)
-        {
-            this.chart1.Series["Index"].Points.AddXY("bill", 1000);
-        }
     }
 }
