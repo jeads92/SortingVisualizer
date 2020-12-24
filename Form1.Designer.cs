@@ -29,26 +29,31 @@ namespace AlgoVisualizer
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.Button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // Button2
+            // 
+            this.Button2.Location = new System.Drawing.Point(101, 30);
+            this.Button2.Name = "Button2";
+            this.Button2.Size = new System.Drawing.Size(75, 23);
+            this.Button2.TabIndex = 0;
+            this.Button2.Text = "button2";
+            this.Button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 404);
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.Button2);
             this.Name = "Form1";
-            this.Text = "Names";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Button2;
     }
 }
 
