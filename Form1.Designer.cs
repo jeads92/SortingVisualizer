@@ -34,7 +34,7 @@ namespace AlgoVisualizer
             // 
             // Button2
             // 
-            this.Button2.Location = new System.Drawing.Point(101, 30);
+            this.Button2.Location = new System.Drawing.Point(113, 226);
             this.Button2.Name = "Button2";
             this.Button2.Size = new System.Drawing.Size(75, 23);
             this.Button2.TabIndex = 0;
