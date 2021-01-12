@@ -20,17 +20,27 @@ namespace AlgoVisualizer
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            int[] testArray = new int[] { 250, 500 };
-            var x = 10;
-            var y = 10;
-            var squareSide = 20;
-            var buffer = 20;
+            int[] testArray = new int[] { 250, 500, 420 };
+            var x = 0;
+            var y = 0;
+            var squareSide = 200;
+            var buffer = 250;
             base.OnPaint(e);
-            SolidBrush myBrush = new SolidBrush(Color.Green);
-            SolidBrush myBrush2 = new SolidBrush(Color.Red);
+            SolidBrush myBrush = new SolidBrush(Color.Red);
+            SolidBrush myBrush2 = new SolidBrush(Color.Green);
+            SolidBrush myBrush3 = new SolidBrush(Color.Black);
+            SolidBrush[] brushArray = new SolidBrush[] { myBrush, myBrush2, myBrush3 };
+            int count = 0;
 
-            e.Graphics.FillRectangle(myBrush2, new Rectangle(0, 0, 200, 100));
-            e.Graphics.FillRectangle(myBrush, new Rectangle(700, 10, 200, 10));
+            foreach(int data in testArray)
+            {
+                
+                e.Graphics.FillRectangle(brushArray[count], new Rectangle(x, y, squareSide, data));
+                count += 1;
+                x += buffer;
+            }
+            // e.Graphics.FillRectangle(myBrush2, new Rectangle(0, 0, 200, 100));
+            // e.Graphics.FillRectangle(myBrush, new Rectangle(700, 0, 200, 10));
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
