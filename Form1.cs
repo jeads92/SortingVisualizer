@@ -32,25 +32,29 @@ namespace AlgoVisualizer
             SolidBrush[] brushArray = new SolidBrush[] { myBrush, myBrush2, myBrush3 };
             int count = 0;
 
-            foreach(int data in testArray)
+            foreach (int data in testArray)
             {
-                
+
                 e.Graphics.FillRectangle(brushArray[count], new Rectangle(x, y, squareSide, data));
                 count += 1;
                 x += buffer;
             }
-            // e.Graphics.FillRectangle(myBrush2, new Rectangle(0, 0, 200, 100));
-            // e.Graphics.FillRectangle(myBrush, new Rectangle(700, 0, 200, 10));
+        }
+    }
+
+    public class ArrayObject
+    {
+
+        private int[] _myArray;
+        public ArrayObject(int datasetSize)
+        {
+            Random number = new Random();
+            _myArray = new int[datasetSize];
+            for (int i = 0; i < datasetSize; i++)
+            {
+                _myArray[i] = number.Next(0, 99);
+            }
         }
 
-        private void Form1_Paint(object sender, PaintEventArgs e)
-        {
-            SolidBrush myBrush = new SolidBrush(Color.Green);
-            Graphics formGraphics;
-            formGraphics = this.CreateGraphics();
-            formGraphics.FillRectangle(myBrush, new Rectangle(0, 0, 200, 300));
-            myBrush.Dispose();
-            formGraphics.Dispose();
-        }
     }
 }
