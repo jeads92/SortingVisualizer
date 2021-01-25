@@ -1,4 +1,7 @@
-﻿using System;
+﻿// https://www.youtube.com/watch?v=UhBKeQj7vpI&t=198s
+// https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/varieties-of-custom-controls?view=netframeworkdesktop-4.8
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,43 +21,42 @@ namespace AlgoVisualizer
             InitializeComponent();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        // ArraySize needs to be linked to a scroll wheel or textbox.
+        public int arraySize = 50;
+        public int[] dataArray = new int[50];
+        Random numberGenerator = new Random();
+
+        private void button2_Click(object sender, EventArgs e)
         {
-            int[] testArray = new int[] { 250, 500, 420 };
-            var x = 0;
-            var y = 0;
-            var squareSide = 200;
-            var buffer = 250;
-            base.OnPaint(e);
-            SolidBrush myBrush = new SolidBrush(Color.Red);
-            SolidBrush myBrush2 = new SolidBrush(Color.Green);
-            SolidBrush myBrush3 = new SolidBrush(Color.Black);
-            SolidBrush[] brushArray = new SolidBrush[] { myBrush, myBrush2, myBrush3 };
-            int count = 0;
+            ArrayObject dataGenerator = new ArrayObject();
+            int[] dataArray = dataGenerator.GenerateData(arraySize);
 
-            foreach (int data in testArray)
+            chart1.Series["Data"].Points.Clear();
+
+            int placement = 0;
+            foreach (int dataPoint in dataArray)
             {
-
-                e.Graphics.FillRectangle(brushArray[count], new Rectangle(x, y, squareSide, data));
-                count += 1;
-                x += buffer;
+                this.chart1.Series["Data"].Points.AddXY(placement, dataPoint);
+                placement += 1;
             }
         }
     }
 
+
+
+
     public class ArrayObject
     {
-
-        private int[] _myArray;
-        public ArrayObject(int datasetSize)
+        public int[] GenerateData(int datasetSize)
         {
             Random number = new Random();
-            _myArray = new int[datasetSize];
+            int[] dataArray = new int[datasetSize];
             for (int i = 0; i < datasetSize; i++)
             {
-                _myArray[i] = number.Next(0, 99);
+                dataArray[i] = number.Next(0, 99);
             }
-        }
 
+            return dataArray;
+        }
     }
 }
