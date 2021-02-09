@@ -28,6 +28,7 @@ namespace AlgoVisualizer
 
         private void button2_Click(object sender, EventArgs e)
         {
+            arraySize = trackBar1.Value;
             ArrayObject dataGenerator = new ArrayObject();
             int[] dataArray = dataGenerator.GenerateData(arraySize);
 
@@ -39,6 +40,11 @@ namespace AlgoVisualizer
                 this.chart1.Series["Data"].Points.AddXY(placement, dataPoint);
                 placement += 1;
             }
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            trackbarValueLabel.Text = trackBar1.Value.ToString();
         }
     }
 
