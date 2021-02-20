@@ -21,10 +21,8 @@ namespace AlgoVisualizer
             InitializeComponent();
         }
 
-        // Initializes an array with a base starting point of 50.
+        // Initializes size of the array.
         public int arraySize;
-        Random numberGenerator = new Random();
-
 
         // Generates the array and links it to the chart for visualization.
         private void button2_Click(object sender, EventArgs e)
