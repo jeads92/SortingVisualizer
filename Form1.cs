@@ -21,6 +21,7 @@ namespace AlgoVisualizer
         public Form1()
         {
             InitializeComponent();
+            // Adds the array to a label for the user to see.
             string arrayText = "";
             foreach(int element in _dataSet)
             {
@@ -32,9 +33,6 @@ namespace AlgoVisualizer
         // Initializes size of the array.
         public int arraySize;
 
-        
-
-
         // updates the label to show the current value that trackBar1 has selected.
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
@@ -43,8 +41,6 @@ namespace AlgoVisualizer
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
-            //Array.Sort(_dataSet);
-
             Sorting.Algorithms.InsertionSort(_dataSet);
             string arrayText = "";
             foreach (int element in _dataSet)
@@ -61,19 +57,18 @@ namespace AlgoVisualizer
                 this.chart1.Series["Data"].Points.AddXY(placement, dataPoint);
                 placement += 1;
             }
-
         }
 
         // Generates the array and links it to the chart for visualization.
         private void createArray_Click(object sender, EventArgs e)
         {
-            // the dataArray takes in the arraySize and returns an array
+            // The dataArray takes in the arraySize and returns an array
             // which is used to populate the chart.
             arraySize = trackBar1.Value;
             ArrayObject dataGenerator = new ArrayObject();
             int[] dataArray = dataGenerator.GenerateData(arraySize);
 
-            int replaceIndex = 0;
+            int replaceIndex = 0; // Could probably use for loop to write this in one line below.
             foreach(int replacePoint in _dataSet)
             {
                 _dataSet[replaceIndex] = 0;
@@ -81,7 +76,7 @@ namespace AlgoVisualizer
             }
 
             // updates the primary array with the randomly generated values.
-            int count = 0;
+            int count = 0; // could use for loop to condense.
             foreach(int point in dataArray)
             {
                 _dataSet[count] = point;
@@ -105,8 +100,6 @@ namespace AlgoVisualizer
                 arrayText += ",";
             }
             intTestLabel.Text = arrayText;
-
-
         }
     }
 
