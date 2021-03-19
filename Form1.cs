@@ -52,9 +52,9 @@ namespace AlgoVisualizer
 
             chart1.Series["Data"].Points.Clear();
             int placement = 0;
-            foreach (int dataPoint in _dataSet)
+            foreach (int point in _dataSet)
             {
-                this.chart1.Series["Data"].Points.AddXY(placement, dataPoint);
+                this.chart1.Series["Data"].Points.AddXY(placement, point);
                 placement += 1;
             }
         }
@@ -65,8 +65,8 @@ namespace AlgoVisualizer
             // The dataArray takes in the arraySize and returns an array
             // which is used to populate the chart.
             arraySize = trackBar1.Value;
-            ArrayObject dataGenerator = new ArrayObject();
-            int[] dataArray = dataGenerator.GenerateData(arraySize);
+            NumberGenerator dataGenerator = new NumberGenerator();
+            int[] dataArray = dataGenerator.Fill(arraySize);
 
             int replaceIndex = 0; // Could probably use for loop to write this in one line below.
             foreach(int replacePoint in _dataSet)
@@ -85,7 +85,7 @@ namespace AlgoVisualizer
 
             // clears the chart and updates it with the new array.
             chart1.Series["Data"].Points.Clear();
-            int placement = 0;
+            int placement = 0; // Replace with a for loop to reduce code lines.
             foreach (int dataPoint in _dataSet)
             {
                 this.chart1.Series["Data"].Points.AddXY(placement, dataPoint);
@@ -103,9 +103,9 @@ namespace AlgoVisualizer
         }
     }
 
-    public class ArrayObject
+    public class NumberGenerator
     {
-        public int[] GenerateData(int datasetSize)
+        public int[] Fill(int datasetSize)
         {
             Random number = new Random();
             int[] dataArray = new int[datasetSize];
