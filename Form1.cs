@@ -30,9 +30,9 @@ namespace AlgoVisualizer
             }
             intTestLabel.Text = arrayText;
         }
+
         // Initializes size of the array.
         public int arraySize;
-
         // updates the label to show the current value that trackBar1 has selected.
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
@@ -50,6 +50,7 @@ namespace AlgoVisualizer
             }
             intTestLabel.Text = arrayText;
 
+            // Clears the chart and then post the new array to the chart.
             chart1.Series["Data"].Points.Clear();
             int placement = 0;
             foreach (int point in _dataSet)
