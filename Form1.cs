@@ -14,11 +14,13 @@ namespace AlgoVisualizer
     public partial class Form1 : Form
     {
         protected int[] _dataSet = new int[100];
+        int timeRunning;
 
         public Form1()
         {
             InitializeComponent();
             UpdateLabel();
+            testTimer.Start();
         }
 
         private void UpdateLabel()
@@ -98,6 +100,12 @@ namespace AlgoVisualizer
             }
 
             UpdateLabel();
+        }
+
+        private void testTimer_Tick(object sender, EventArgs e)
+        {
+            timeRunning += 1;
+            timeLabel.Text = $"Time Running {Convert.ToString(timeRunning)} seconds.";
         }
     }
 

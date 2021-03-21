@@ -29,6 +29,7 @@ namespace AlgoVisualizer
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -39,6 +40,8 @@ namespace AlgoVisualizer
             this.buttonSort = new System.Windows.Forms.Button();
             this.intTestLabel = new System.Windows.Forms.Label();
             this.createArray = new System.Windows.Forms.Button();
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.testTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -118,9 +121,24 @@ namespace AlgoVisualizer
             this.createArray.UseVisualStyleBackColor = true;
             this.createArray.Click += new System.EventHandler(this.createArray_Click);
             // 
+            // timeLabel
+            // 
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Location = new System.Drawing.Point(366, 269);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(76, 13);
+            this.timeLabel.TabIndex = 10;
+            this.timeLabel.Text = "Time Running:";
+            // 
+            // testTimer
+            // 
+            this.testTimer.Interval = 1000;
+            this.testTimer.Tick += new System.EventHandler(this.testTimer_Tick);
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(473, 474);
+            this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.createArray);
             this.Controls.Add(this.intTestLabel);
             this.Controls.Add(this.buttonSort);
@@ -146,6 +164,8 @@ namespace AlgoVisualizer
         private System.Windows.Forms.Button buttonSort;
         private System.Windows.Forms.Label intTestLabel;
         private System.Windows.Forms.Button createArray;
+        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Timer testTimer;
     }
 }
 
