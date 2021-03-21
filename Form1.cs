@@ -42,10 +42,9 @@ namespace AlgoVisualizer
             intTestLabel.Text = arrayText;
         }
 
-
         // Initializes size of the array.
         public int arraySize;
-        // updates the label to show the current value that trackBar1 has selected.
+
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             trackbarValueLabel.Text = trackBar1.Value.ToString();
@@ -53,7 +52,16 @@ namespace AlgoVisualizer
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
-            Sorting.Algorithms.InsertionSort(_dataSet);
+            switch(algorithmBox.SelectedItem.ToString())
+            {
+                case "Insertion Sort":
+                    Sorting.Algorithms.InsertionSort(_dataSet);
+                    break;
+                case "Bubble Sort":
+                    Sorting.Algorithms.BubbleSort(_dataSet);
+                    break;
+            }
+            
             UpdateLabel();
 
             // Clears the chart and then post the new array to the chart.
@@ -107,6 +115,11 @@ namespace AlgoVisualizer
             timeRunning += 1;
             timeLabel.Text = $"Time Running {Convert.ToString(timeRunning)} seconds.";
         }
+
+        private void algorithmBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nameSpaceTest.Text = algorithmBox.SelectedItem.ToString();
+        }
     }
 
     public class NumberGenerator
@@ -131,13 +144,6 @@ namespace Sorting
     {
         public static void InsertionSort(int[] intArray)
         {
-            foreach (int number in intArray)
-            {
-                Console.Write(number);
-                Console.Write(", ");
-            }
-
-            Console.WriteLine();
             int i = 1;
             int j = 1;
             int placeHolder = 1;
@@ -153,12 +159,23 @@ namespace Sorting
                 }
                 i++;
             }
-            foreach (int item in intArray)
+        }
+
+        public static void BubbleSort(int[] intArray)
+        {
+            int n = intArray.Length;
+            for(int i = 0; i < n-1; i++)
             {
-                Console.Write(item);
-                Console.Write(", ");
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (intArray[j] > intArray[j+1])
+                    {
+                        int placeholder = intArray[j];
+                        intArray[j] = intArray[j + 1];
+                        intArray[j + 1] = placeholder;
+                    }
+                }
             }
-            Console.WriteLine();
         }
     }
 }

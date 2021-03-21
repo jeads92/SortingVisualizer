@@ -42,6 +42,8 @@ namespace AlgoVisualizer
             this.createArray = new System.Windows.Forms.Button();
             this.timeLabel = new System.Windows.Forms.Label();
             this.testTimer = new System.Windows.Forms.Timer(this.components);
+            this.nameSpaceTest = new System.Windows.Forms.Label();
+            this.algorithmBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -105,7 +107,7 @@ namespace AlgoVisualizer
             // intTestLabel
             // 
             this.intTestLabel.AutoSize = true;
-            this.intTestLabel.Location = new System.Drawing.Point(366, 89);
+            this.intTestLabel.Location = new System.Drawing.Point(467, 84);
             this.intTestLabel.Name = "intTestLabel";
             this.intTestLabel.Size = new System.Drawing.Size(35, 13);
             this.intTestLabel.TabIndex = 8;
@@ -124,7 +126,7 @@ namespace AlgoVisualizer
             // timeLabel
             // 
             this.timeLabel.AutoSize = true;
-            this.timeLabel.Location = new System.Drawing.Point(366, 269);
+            this.timeLabel.Location = new System.Drawing.Point(467, 254);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(76, 13);
             this.timeLabel.TabIndex = 10;
@@ -135,9 +137,44 @@ namespace AlgoVisualizer
             this.testTimer.Interval = 1000;
             this.testTimer.Tick += new System.EventHandler(this.testTimer_Tick);
             // 
+            // nameSpaceTest
+            // 
+            this.nameSpaceTest.AutoSize = true;
+            this.nameSpaceTest.Location = new System.Drawing.Point(457, 377);
+            this.nameSpaceTest.Name = "nameSpaceTest";
+            this.nameSpaceTest.Size = new System.Drawing.Size(119, 13);
+            this.nameSpaceTest.TabIndex = 11;
+            this.nameSpaceTest.Text = "namespace unchanged";
+            // 
+            // algorithmBox
+            // 
+            this.algorithmBox.FormattingEnabled = true;
+            this.algorithmBox.Items.AddRange(new object[] {
+            "Insertion Sort",
+            "Selection Sort",
+            "Bubble Sort",
+            "Merge Sort",
+            "Quick Sort",
+            "Heap Sort",
+            "Radix Sort",
+            "Bucket Sort",
+            "Bogo Sort",
+            "Tree Sort",
+            "Comb Sort",
+            "Merge Sort",
+            "Shell Sort Counting Sort",
+            "Cocktail Shaker Sort"});
+            this.algorithmBox.Location = new System.Drawing.Point(657, 84);
+            this.algorithmBox.Name = "algorithmBox";
+            this.algorithmBox.Size = new System.Drawing.Size(120, 95);
+            this.algorithmBox.TabIndex = 12;
+            this.algorithmBox.SelectedIndexChanged += new System.EventHandler(this.algorithmBox_SelectedIndexChanged);
+            // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(473, 474);
+            this.ClientSize = new System.Drawing.Size(992, 618);
+            this.Controls.Add(this.algorithmBox);
+            this.Controls.Add(this.nameSpaceTest);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.createArray);
             this.Controls.Add(this.intTestLabel);
@@ -146,6 +183,7 @@ namespace AlgoVisualizer
             this.Controls.Add(this.trackbarValueLabel);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.chart1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
@@ -166,6 +204,8 @@ namespace AlgoVisualizer
         private System.Windows.Forms.Button createArray;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Timer testTimer;
+        private System.Windows.Forms.Label nameSpaceTest;
+        private System.Windows.Forms.ListBox algorithmBox;
     }
 }
 
