@@ -18,34 +18,12 @@ namespace AlgoVisualizer
         public Form1()
         {
             InitializeComponent();
+            UpdateLabel();
+        }
+
+        private void UpdateLabel()
+        {
             // Adds the array to a label for the user to see.
-            string arrayText = "";
-            int newLineCount = 0;
-            foreach(int element in _dataSet)
-            {
-                arrayText += element;
-                arrayText += ",";
-                newLineCount += 1;
-                if (newLineCount == 10)
-                {
-                    arrayText += '\n';
-                    newLineCount = 0;
-                }
-            }
-            intTestLabel.Text = arrayText;
-        }
-
-        // Initializes size of the array.
-        public int arraySize;
-        // updates the label to show the current value that trackBar1 has selected.
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            trackbarValueLabel.Text = trackBar1.Value.ToString();
-        }
-
-        private void buttonSort_Click(object sender, EventArgs e)
-        {
-            Sorting.Algorithms.InsertionSort(_dataSet);
             string arrayText = "";
             int newLineCount = 0;
             foreach (int element in _dataSet)
@@ -60,6 +38,21 @@ namespace AlgoVisualizer
                 }
             }
             intTestLabel.Text = arrayText;
+        }
+
+
+        // Initializes size of the array.
+        public int arraySize;
+        // updates the label to show the current value that trackBar1 has selected.
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            trackbarValueLabel.Text = trackBar1.Value.ToString();
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            Sorting.Algorithms.InsertionSort(_dataSet);
+            UpdateLabel();
 
             // Clears the chart and then post the new array to the chart.
             chart1.Series["Data"].Points.Clear();
@@ -104,21 +97,7 @@ namespace AlgoVisualizer
                 placement += 1;
             }
 
-            // updates the label. This will be removed later. For debugging purposes only.
-            string arrayText = "";
-            int newLineCount = 0;
-            foreach (int element in _dataSet)
-            {
-                arrayText += element;
-                arrayText += ",";
-                newLineCount += 1;
-                if (newLineCount == 10)
-                {
-                    arrayText += '\n';
-                    newLineCount = 0;
-                }
-            }
-            intTestLabel.Text = arrayText;
+            UpdateLabel();
         }
     }
 
