@@ -1,7 +1,4 @@
-﻿// https://www.youtube.com/watch?v=UhBKeQj7vpI&t=198s
-// https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/varieties-of-custom-controls?view=netframeworkdesktop-4.8
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,10 +20,17 @@ namespace AlgoVisualizer
             InitializeComponent();
             // Adds the array to a label for the user to see.
             string arrayText = "";
+            int newLineCount = 0;
             foreach(int element in _dataSet)
             {
                 arrayText += element;
                 arrayText += ",";
+                newLineCount += 1;
+                if (newLineCount == 10)
+                {
+                    arrayText += '\n';
+                    newLineCount = 0;
+                }
             }
             intTestLabel.Text = arrayText;
         }
@@ -43,10 +47,17 @@ namespace AlgoVisualizer
         {
             Sorting.Algorithms.InsertionSort(_dataSet);
             string arrayText = "";
+            int newLineCount = 0;
             foreach (int element in _dataSet)
             {
                 arrayText += element;
                 arrayText += ",";
+                newLineCount += 1;
+                if (newLineCount == 10)
+                {
+                    arrayText += '\n';
+                    newLineCount = 0;
+                }
             }
             intTestLabel.Text = arrayText;
 
@@ -66,8 +77,8 @@ namespace AlgoVisualizer
             // The dataArray takes in the arraySize and returns an array
             // which is used to populate the chart.
             arraySize = trackBar1.Value;
-            NumberGenerator dataGenerator = new NumberGenerator();
-            int[] dataArray = dataGenerator.Fill(arraySize);
+            NumberGenerator dataRandomizer = new NumberGenerator();
+            int[] dataArray = dataRandomizer.Fill(arraySize);
 
             int replaceIndex = 0; // Could probably use for loop to write this in one line below.
             foreach(int replacePoint in _dataSet)
@@ -95,10 +106,17 @@ namespace AlgoVisualizer
 
             // updates the label. This will be removed later. For debugging purposes only.
             string arrayText = "";
+            int newLineCount = 0;
             foreach (int element in _dataSet)
             {
                 arrayText += element;
                 arrayText += ",";
+                newLineCount += 1;
+                if (newLineCount == 10)
+                {
+                    arrayText += '\n';
+                    newLineCount = 0;
+                }
             }
             intTestLabel.Text = arrayText;
         }
