@@ -52,24 +52,36 @@ namespace AlgoVisualizer
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
-            switch(algorithmBox.SelectedItem.ToString())
+            // Tests to see if the selection box has been selected.
+            if (algorithmBox.SelectedItem is null)
             {
-                case "Insertion Sort":
-                    Sorting.Algorithms.InsertionSort(_dataSet);
-                    break;
-                case "Bubble Sort":
-                    Sorting.Algorithms.BubbleSort(_dataSet);
-                    break;
-                case "Cocktail Shaker Sort":
-                    Sorting.Algorithms.CocktailSort(_dataSet);
-                    break;
-                case "Merge Sort":
-                    Sorting.Algorithms.MergeSort MergeObject = new Sorting.Algorithms.MergeSort();
-                    MergeObject.sort(_dataSet, 0, _dataSet.Length - 1);
-                    break;
+                return;
+            }
+            else
+            {
+                switch (algorithmBox.SelectedItem.ToString())
+                {
+                    case "Insertion Sort":
+                        Sorting.Algorithms.InsertionSort(_dataSet);
+                        break;
+                    case "Bubble Sort":
+                        Sorting.Algorithms.BubbleSort(_dataSet);
+                        break;
+                    case "Cocktail Shaker Sort":
+                        Sorting.Algorithms.CocktailSort(_dataSet);
+                        break;
+                    case "Merge Sort":
+                        Sorting.Algorithms.MergeSort MergeObject = new Sorting.Algorithms.MergeSort();
+                        MergeObject.sort(_dataSet, 0, _dataSet.Length - 1);
+                        break;
+                    case null:
+                        Console.WriteLine("object set to null reference");
+                        break;
+                }
+
+                UpdateLabel();
             }
             
-            UpdateLabel();
 
             // Clears the chart and then post the new array to the chart.
             chart1.Series["Data"].Points.Clear();
