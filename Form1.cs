@@ -60,6 +60,9 @@ namespace AlgoVisualizer
                 case "Bubble Sort":
                     Sorting.Algorithms.BubbleSort(_dataSet);
                     break;
+                case "Cocktail Shaker Sort":
+                    Sorting.Algorithms.CocktailSort(_dataSet);
+                    break;
             }
             
             UpdateLabel();
@@ -170,11 +173,51 @@ namespace Sorting
                 {
                     if (intArray[j] > intArray[j+1])
                     {
-                        int placeholder = intArray[j];
+                        int placeHolder = intArray[j];
                         intArray[j] = intArray[j + 1];
-                        intArray[j + 1] = placeholder;
+                        intArray[j + 1] = placeHolder;
                     }
                 }
+            }
+        }
+
+        public static void CocktailSort(int[] intArray)
+        {
+            bool swapped = true;
+            int start = 0;
+            int end = intArray.Length;
+
+            while (swapped == true)
+            {
+                swapped = false;
+
+                for (int i = start; i < end - 1; ++i)
+                { 
+                    if (intArray[i] > intArray[i + 1])
+                    {
+                        int placeHolder = intArray[i];
+                        intArray[i] = intArray[i + 1];
+                        intArray[i + 1] = placeHolder;
+                        swapped = true;
+                    }
+                }
+
+                if (swapped == false)
+                    break;
+                swapped = false;
+                end = end - 1;
+
+                for (int i = end - 1; i >= start; i--)
+                {
+                    if (intArray[i] > intArray[i + 1])
+                    {
+                        int temp = intArray[i];
+                        intArray[i] = intArray[i + 1];
+                        intArray[i + 1] = temp;
+                        swapped = true;
+                    }
+                }
+                start = start + 1;
             }
         }
     }
