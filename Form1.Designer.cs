@@ -166,7 +166,7 @@ namespace AlgoVisualizer
             "Cocktail Shaker Sort"});
             this.algorithmBox.Location = new System.Drawing.Point(657, 84);
             this.algorithmBox.Name = "algorithmBox";
-            this.algorithmBox.Size = new System.Drawing.Size(120, 95);
+            this.algorithmBox.Size = new System.Drawing.Size(146, 212);
             this.algorithmBox.TabIndex = 12;
             this.algorithmBox.SelectedIndexChanged += new System.EventHandler(this.algorithmBox_SelectedIndexChanged);
             // 

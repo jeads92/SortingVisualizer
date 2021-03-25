@@ -63,6 +63,10 @@ namespace AlgoVisualizer
                 case "Cocktail Shaker Sort":
                     Sorting.Algorithms.CocktailSort(_dataSet);
                     break;
+                case "Merge Sort":
+                    Sorting.Algorithms.MergeSort MergeObject = new Sorting.Algorithms.MergeSort();
+                    MergeObject.sort(_dataSet, 0, _dataSet.Length - 1);
+                    break;
             }
             
             UpdateLabel();
@@ -220,7 +224,82 @@ namespace Sorting
                 start = start + 1;
             }
         }
+
+        public class MergeSort
+        {
+            public void merge(int[] arr, int l, int m, int r)
+            {
+                // Sizes of the two array that will be merged.
+                int arraySizeOne = m - l + 1;
+                int arraySizeTwo = r - m;
+
+                // Temporary Arrays
+                int[] tempArrayOne = new int[arraySizeOne];
+                int[] tempArrayTwo = new int[arraySizeTwo];
+                int firstArrayIndex, secondArrayIndex;
+
+                // Copy data to temp arrays
+                for (firstArrayIndex = 0; firstArrayIndex < arraySizeOne; ++firstArrayIndex)
+                    tempArrayOne[firstArrayIndex] = arr[l + firstArrayIndex];
+                for (secondArrayIndex = 0; secondArrayIndex < arraySizeTwo; ++secondArrayIndex)
+                    tempArrayTwo[secondArrayIndex] = arr[m + 1 + secondArrayIndex];
+
+                // Merge the temp arrays
+
+                // Initial indexes of the sub arrays
+                firstArrayIndex = 0;
+                secondArrayIndex = 0;
+
+                // Initial index of merged subarry array
+                int subArrayIndex = l;
+                while (firstArrayIndex < arraySizeOne && secondArrayIndex < arraySizeTwo)
+                {
+                    if (tempArrayOne[firstArrayIndex] <= tempArrayTwo[secondArrayIndex])
+                    {
+                        arr[subArrayIndex] = tempArrayOne[firstArrayIndex];
+                        firstArrayIndex++;
+                    }
+                    else
+                    {
+                        arr[subArrayIndex] = tempArrayTwo[secondArrayIndex];
+                        secondArrayIndex++;
+                    }
+                    subArrayIndex++;
+                }
+
+                // Copy remaining elements tempArrayOne
+                while (firstArrayIndex < arraySizeOne)
+                {
+                    arr[subArrayIndex] = tempArrayOne[firstArrayIndex];
+                    firstArrayIndex++;
+                    subArrayIndex++;
+                }
+
+                // Copy remaining elements tempArrayTwo
+                while (secondArrayIndex < arraySizeTwo)
+                {
+                    arr[subArrayIndex] = tempArrayTwo[secondArrayIndex];
+                    secondArrayIndex++;
+                    subArrayIndex++;
+                }
+            }
+
+            // Primary sorting function.
+            public void sort(int[] arr, int l, int r)
+            {
+                if (l < r)
+                {
+                    // This find the middle point
+                    int m = l + (r - l) / 2;
+
+                    // This sorts the first and second halves
+                    sort(arr, l, m);
+                    sort(arr, m + 1, r);
+
+                    // Merges the sorted halves
+                    merge(arr, l, m, r);
+                }
+            }
+        }
     }
 }
-
-// test
