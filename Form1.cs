@@ -79,9 +79,11 @@ namespace AlgoVisualizer
                         int arrayLength = _dataSet.Length - 1;
                         Sorting.Algorithms.QuickSort.quickSort(_dataSet, 0, arrayLength);
                         break;
-
+                    case "Heap Sort":
+                        Sorting.Algorithms.HeapSort heapObject = new Sorting.Algorithms.HeapSort();
+                        heapObject.sort(_dataSet);
+                        break;
                     case null:
-                        Console.WriteLine("object set to null reference");
                         break;
                 }
 
@@ -189,11 +191,11 @@ namespace Sorting
         public static void BubbleSort(int[] intArray)
         {
             int n = intArray.Length;
-            for(int i = 0; i < n-1; i++)
+            for (int i = 0; i < n - 1; i++)
             {
                 for (int j = 0; j < n - i - 1; j++)
                 {
-                    if (intArray[j] > intArray[j+1])
+                    if (intArray[j] > intArray[j + 1])
                     {
                         int placeHolder = intArray[j];
                         intArray[j] = intArray[j + 1];
@@ -214,7 +216,7 @@ namespace Sorting
                 swapped = false;
 
                 for (int i = start; i < end - 1; ++i)
-                { 
+                {
                     if (intArray[i] > intArray[i + 1])
                     {
                         int placeHolder = intArray[i];
@@ -382,6 +384,62 @@ namespace Sorting
                     // partition and after partition
                     quickSort(arr, low, pi - 1);
                     quickSort(arr, pi + 1, high);
+                }
+            }
+
+        }
+
+        public class HeapSort
+        {
+            public void sort(int[] arr)
+            {
+                int n = arr.Length;
+
+                // This builds the heap and rearranges the array.
+                // n / 2 - 1 focuses on heapifying all nodes except the leaf nodes.
+                for (int i = n / 2 - 1; i >= 0; i--)
+                    heapify(arr, n, i);
+
+                // This extracts an element from the heap.
+                for (int i = n - 1; i > 0; i--)
+                {
+                    // This moves the current root to end.
+                    int temp = arr[0];
+                    arr[0] = arr[i];
+                    arr[i] = temp;
+
+                    // This calls max heapify on the reduced heap.
+                    heapify(arr, i, 0);
+                }
+            }
+
+            // To heapify a subtree with node i as the root
+            // n = size of the heap.
+            void heapify(int[] arr, int n, int i)
+            {
+                int largestNode = i; // Initialize largest as root
+                int left = 2 * i + 1; // left = 2*i + 1
+                int right = 2 * i + 2; // right = 2*i + 2
+
+                // Replaces the largest value as the left node.
+                if (left < n && arr[left] > arr[largestNode])
+                    largestNode = left;
+
+                // Replaces the largest value as the right node.
+                if (right < n && arr[right] > arr[largestNode])
+                    largestNode = right;
+
+                // This updates the value for the largest node
+                // if there was a swap with one of the child nodes.
+                if (largestNode != i)
+                {
+                    int swap = arr[i];
+                    arr[i] = arr[largestNode];
+                    arr[largestNode] = swap;
+
+                    // Recursively heapify any sub trees that
+                    // underwent a change.
+                    heapify(arr, n, largestNode);
                 }
             }
 
