@@ -147,6 +147,11 @@ namespace AlgoVisualizer
         {
             nameSpaceTest.Text = algorithmBox.SelectedItem.ToString();
         }
+
+        private void changeColorTest_Click(object sender, EventArgs e)
+        {
+            this.chart1.Series["Data"].Points[0].Color = Color.Red;
+        }
     }
 
     public class NumberGenerator
@@ -340,7 +345,6 @@ namespace Sorting
             public static int partition(int[] arr, int low, int high)
             {
                 // pivot
-                Console.WriteLine(high);
                 int pivot = arr[high];
 
                 // Index of smaller element and

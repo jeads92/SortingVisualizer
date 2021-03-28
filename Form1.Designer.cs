@@ -44,6 +44,8 @@ namespace AlgoVisualizer
             this.testTimer = new System.Windows.Forms.Timer(this.components);
             this.nameSpaceTest = new System.Windows.Forms.Label();
             this.algorithmBox = new System.Windows.Forms.ListBox();
+            this.iterationLabel = new System.Windows.Forms.Label();
+            this.changeColorTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +68,7 @@ namespace AlgoVisualizer
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(12, 439);
+            this.trackBar1.Location = new System.Drawing.Point(613, 28);
             this.trackBar1.Maximum = 100;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
@@ -79,7 +81,7 @@ namespace AlgoVisualizer
             // trackbarValueLabel
             // 
             this.trackbarValueLabel.AutoSize = true;
-            this.trackbarValueLabel.Location = new System.Drawing.Point(73, 423);
+            this.trackbarValueLabel.Location = new System.Drawing.Point(674, 12);
             this.trackbarValueLabel.Name = "trackbarValueLabel";
             this.trackbarValueLabel.Size = new System.Drawing.Size(13, 13);
             this.trackbarValueLabel.TabIndex = 5;
@@ -88,7 +90,7 @@ namespace AlgoVisualizer
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 423);
+            this.label2.Location = new System.Drawing.Point(614, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 6;
@@ -96,7 +98,7 @@ namespace AlgoVisualizer
             // 
             // buttonSort
             // 
-            this.buttonSort.Location = new System.Drawing.Point(286, 439);
+            this.buttonSort.Location = new System.Drawing.Point(630, 108);
             this.buttonSort.Name = "buttonSort";
             this.buttonSort.Size = new System.Drawing.Size(75, 23);
             this.buttonSort.TabIndex = 7;
@@ -115,7 +117,7 @@ namespace AlgoVisualizer
             // 
             // createArray
             // 
-            this.createArray.Location = new System.Drawing.Point(137, 439);
+            this.createArray.Location = new System.Drawing.Point(630, 79);
             this.createArray.Name = "createArray";
             this.createArray.Size = new System.Drawing.Size(75, 23);
             this.createArray.TabIndex = 9;
@@ -161,18 +163,38 @@ namespace AlgoVisualizer
             "Bogo Sort",
             "Tree Sort",
             "Comb Sort",
-            "Merge Sort",
             "Shell Sort Counting Sort",
             "Cocktail Shaker Sort"});
-            this.algorithmBox.Location = new System.Drawing.Point(657, 84);
+            this.algorithmBox.Location = new System.Drawing.Point(722, 12);
             this.algorithmBox.Name = "algorithmBox";
             this.algorithmBox.Size = new System.Drawing.Size(146, 212);
             this.algorithmBox.TabIndex = 12;
             this.algorithmBox.SelectedIndexChanged += new System.EventHandler(this.algorithmBox_SelectedIndexChanged);
             // 
+            // iterationLabel
+            // 
+            this.iterationLabel.AutoSize = true;
+            this.iterationLabel.Location = new System.Drawing.Point(470, 12);
+            this.iterationLabel.Name = "iterationLabel";
+            this.iterationLabel.Size = new System.Drawing.Size(53, 13);
+            this.iterationLabel.TabIndex = 13;
+            this.iterationLabel.Text = "Iterations:";
+            // 
+            // changeColorTest
+            // 
+            this.changeColorTest.Location = new System.Drawing.Point(630, 138);
+            this.changeColorTest.Name = "changeColorTest";
+            this.changeColorTest.Size = new System.Drawing.Size(75, 86);
+            this.changeColorTest.TabIndex = 14;
+            this.changeColorTest.Text = "Change Color";
+            this.changeColorTest.UseVisualStyleBackColor = true;
+            this.changeColorTest.Click += new System.EventHandler(this.changeColorTest_Click);
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(992, 618);
+            this.Controls.Add(this.changeColorTest);
+            this.Controls.Add(this.iterationLabel);
             this.Controls.Add(this.algorithmBox);
             this.Controls.Add(this.nameSpaceTest);
             this.Controls.Add(this.timeLabel);
@@ -206,6 +228,8 @@ namespace AlgoVisualizer
         private System.Windows.Forms.Timer testTimer;
         private System.Windows.Forms.Label nameSpaceTest;
         private System.Windows.Forms.ListBox algorithmBox;
+        private System.Windows.Forms.Label iterationLabel;
+        private System.Windows.Forms.Button changeColorTest;
     }
 }
 
