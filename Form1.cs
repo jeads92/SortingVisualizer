@@ -13,14 +13,13 @@ namespace AlgoVisualizer
 {
     public partial class Form1 : Form
     {
-        protected int[] _dataSet = new int[100];
-        int timeRunning;
+        static int[] _dataSet = new int[100];
+        // Initializes size of the array.
+        public int arraySize;
 
         public Form1()
         {
             InitializeComponent();
-            UpdateLabel();
-            testTimer.Start();
         }
 
         private void UpdateLabel()
@@ -42,13 +41,52 @@ namespace AlgoVisualizer
             intTestLabel.Text = arrayText;
         }
 
-        // Initializes size of the array.
-        public int arraySize;
+        private void updateBarChart()
+        {
+            chart1.Series["Data"].Points.Clear();
+            int placement = 0;
+            foreach (int point in _dataSet)
+            {
+                this.chart1.Series["Data"].Points.AddXY(placement, point);
+                placement += 1;
+            }
+        }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             trackbarValueLabel.Text = trackBar1.Value.ToString();
         }
+
+        public void InsertionSort(int[] intArray)
+        {
+
+            Form1 testObject = new Form1();
+            int i = 1;
+            int j = 1;
+            int placeHolder = 1;
+            while (i < intArray.Length)
+            {
+                j = i;
+                while (j > 0 && intArray[j - 1] > intArray[j])
+                {
+                    placeHolder = intArray[j];
+                    intArray[j] = intArray[j - 1];
+                    intArray[j - 1] = placeHolder;
+                    j--;
+                    testObject.updateBarChart();
+                    testObject.UpdateLabel();
+                    // run testTimer_Tick();
+                    testTimer.Start();
+                    
+
+
+
+
+                }
+                i++;
+            }
+        }
+
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
@@ -86,19 +124,12 @@ namespace AlgoVisualizer
                     case null:
                         break;
                 }
-
                 UpdateLabel();
             }
-            
+
 
             // Clears the chart and then post the new array to the chart.
-            chart1.Series["Data"].Points.Clear();
-            int placement = 0;
-            foreach (int point in _dataSet)
-            {
-                this.chart1.Series["Data"].Points.AddXY(placement, point);
-                placement += 1;
-            }
+            updateBarChart();
         }
 
         // Generates the array and links it to the chart for visualization.
@@ -137,21 +168,9 @@ namespace AlgoVisualizer
             UpdateLabel();
         }
 
-        private void testTimer_Tick(object sender, EventArgs e)
-        {
-            timeRunning += 1;
-            timeLabel.Text = $"Time Running {Convert.ToString(timeRunning)} seconds.";
-        }
-
-        private void algorithmBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            nameSpaceTest.Text = algorithmBox.SelectedItem.ToString();
-        }
-
-        private void changeColorTest_Click(object sender, EventArgs e)
-        {
-            this.chart1.Series["Data"].Points[0].Color = Color.Red;
-        }
+        // Test to change the color of a spot in an array. This will
+        // allow us to highlight arrays values that are currently being
+        // analyzed and swapped later.
     }
 
     public class NumberGenerator
@@ -188,6 +207,9 @@ namespace Sorting
                     intArray[j] = intArray[j - 1];
                     intArray[j - 1] = placeHolder;
                     j--;
+
+
+
                 }
                 i++;
             }

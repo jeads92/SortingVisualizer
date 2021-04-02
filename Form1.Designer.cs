@@ -30,9 +30,9 @@ namespace AlgoVisualizer
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.trackbarValueLabel = new System.Windows.Forms.Label();
@@ -40,28 +40,26 @@ namespace AlgoVisualizer
             this.buttonSort = new System.Windows.Forms.Button();
             this.intTestLabel = new System.Windows.Forms.Label();
             this.createArray = new System.Windows.Forms.Button();
-            this.timeLabel = new System.Windows.Forms.Label();
-            this.testTimer = new System.Windows.Forms.Timer(this.components);
-            this.nameSpaceTest = new System.Windows.Forms.Label();
             this.algorithmBox = new System.Windows.Forms.ListBox();
-            this.iterationLabel = new System.Windows.Forms.Label();
-            this.changeColorTest = new System.Windows.Forms.Button();
+            this.indexSwapsLabel = new System.Windows.Forms.Label();
+            this.testTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            this.chart1.BackColor = System.Drawing.Color.Transparent;
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(16, 12);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Data";
-            this.chart1.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Data";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(445, 395);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
@@ -83,7 +81,7 @@ namespace AlgoVisualizer
             this.trackbarValueLabel.AutoSize = true;
             this.trackbarValueLabel.Location = new System.Drawing.Point(674, 12);
             this.trackbarValueLabel.Name = "trackbarValueLabel";
-            this.trackbarValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.trackbarValueLabel.Size = new System.Drawing.Size(14, 15);
             this.trackbarValueLabel.TabIndex = 5;
             this.trackbarValueLabel.Text = "0";
             // 
@@ -92,7 +90,7 @@ namespace AlgoVisualizer
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(614, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.Size = new System.Drawing.Size(63, 15);
             this.label2.TabIndex = 6;
             this.label2.Text = "Array Size:";
             // 
@@ -109,11 +107,11 @@ namespace AlgoVisualizer
             // intTestLabel
             // 
             this.intTestLabel.AutoSize = true;
-            this.intTestLabel.Location = new System.Drawing.Point(467, 84);
+            this.intTestLabel.Location = new System.Drawing.Point(367, 108);
             this.intTestLabel.Name = "intTestLabel";
-            this.intTestLabel.Size = new System.Drawing.Size(35, 13);
+            this.intTestLabel.Size = new System.Drawing.Size(74, 15);
             this.intTestLabel.TabIndex = 8;
-            this.intTestLabel.Text = "label1";
+            this.intTestLabel.Text = "Array Values";
             // 
             // createArray
             // 
@@ -125,32 +123,10 @@ namespace AlgoVisualizer
             this.createArray.UseVisualStyleBackColor = true;
             this.createArray.Click += new System.EventHandler(this.createArray_Click);
             // 
-            // timeLabel
-            // 
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.Location = new System.Drawing.Point(467, 254);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(76, 13);
-            this.timeLabel.TabIndex = 10;
-            this.timeLabel.Text = "Time Running:";
-            // 
-            // testTimer
-            // 
-            this.testTimer.Interval = 1000;
-            this.testTimer.Tick += new System.EventHandler(this.testTimer_Tick);
-            // 
-            // nameSpaceTest
-            // 
-            this.nameSpaceTest.AutoSize = true;
-            this.nameSpaceTest.Location = new System.Drawing.Point(457, 377);
-            this.nameSpaceTest.Name = "nameSpaceTest";
-            this.nameSpaceTest.Size = new System.Drawing.Size(119, 13);
-            this.nameSpaceTest.TabIndex = 11;
-            this.nameSpaceTest.Text = "namespace unchanged";
-            // 
             // algorithmBox
             // 
             this.algorithmBox.FormattingEnabled = true;
+            this.algorithmBox.ItemHeight = 15;
             this.algorithmBox.Items.AddRange(new object[] {
             "Insertion Sort",
             "Selection Sort",
@@ -167,37 +143,28 @@ namespace AlgoVisualizer
             "Cocktail Shaker Sort"});
             this.algorithmBox.Location = new System.Drawing.Point(722, 12);
             this.algorithmBox.Name = "algorithmBox";
-            this.algorithmBox.Size = new System.Drawing.Size(146, 212);
+            this.algorithmBox.Size = new System.Drawing.Size(146, 214);
             this.algorithmBox.TabIndex = 12;
-            this.algorithmBox.SelectedIndexChanged += new System.EventHandler(this.algorithmBox_SelectedIndexChanged);
             // 
-            // iterationLabel
+            // indexSwapsLabel
             // 
-            this.iterationLabel.AutoSize = true;
-            this.iterationLabel.Location = new System.Drawing.Point(470, 12);
-            this.iterationLabel.Name = "iterationLabel";
-            this.iterationLabel.Size = new System.Drawing.Size(53, 13);
-            this.iterationLabel.TabIndex = 13;
-            this.iterationLabel.Text = "Iterations:";
+            this.indexSwapsLabel.AutoSize = true;
+            this.indexSwapsLabel.Location = new System.Drawing.Point(470, 12);
+            this.indexSwapsLabel.Name = "indexSwapsLabel";
+            this.indexSwapsLabel.Size = new System.Drawing.Size(80, 15);
+            this.indexSwapsLabel.TabIndex = 13;
+            this.indexSwapsLabel.Text = "Index Swaps:";
             // 
-            // changeColorTest
+            // testTimer
             // 
-            this.changeColorTest.Location = new System.Drawing.Point(630, 138);
-            this.changeColorTest.Name = "changeColorTest";
-            this.changeColorTest.Size = new System.Drawing.Size(75, 86);
-            this.changeColorTest.TabIndex = 14;
-            this.changeColorTest.Text = "Change Color";
-            this.changeColorTest.UseVisualStyleBackColor = true;
-            this.changeColorTest.Click += new System.EventHandler(this.changeColorTest_Click);
+            this.testTimer.Interval = 1000;
             // 
             // Form1
             // 
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(992, 618);
-            this.Controls.Add(this.changeColorTest);
-            this.Controls.Add(this.iterationLabel);
+            this.Controls.Add(this.indexSwapsLabel);
             this.Controls.Add(this.algorithmBox);
-            this.Controls.Add(this.nameSpaceTest);
-            this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.createArray);
             this.Controls.Add(this.intTestLabel);
             this.Controls.Add(this.buttonSort);
@@ -205,6 +172,7 @@ namespace AlgoVisualizer
             this.Controls.Add(this.trackbarValueLabel);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.chart1);
+            this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -224,12 +192,9 @@ namespace AlgoVisualizer
         private System.Windows.Forms.Button buttonSort;
         private System.Windows.Forms.Label intTestLabel;
         private System.Windows.Forms.Button createArray;
-        private System.Windows.Forms.Label timeLabel;
-        private System.Windows.Forms.Timer testTimer;
-        private System.Windows.Forms.Label nameSpaceTest;
         private System.Windows.Forms.ListBox algorithmBox;
-        private System.Windows.Forms.Label iterationLabel;
-        private System.Windows.Forms.Button changeColorTest;
+        private System.Windows.Forms.Label indexSwapsLabel;
+        private System.Windows.Forms.Timer testTimer;
     }
 }
 
