@@ -22,6 +22,12 @@ namespace AlgoVisualizer
             InitializeComponent();
         }
 
+        async Task PutTaskDelay()
+        {
+            await Task.Delay(1000);
+        }
+
+
         private void UpdateLabel()
         {
             // Adds the array to a label for the user to see.
@@ -52,12 +58,23 @@ namespace AlgoVisualizer
             }
         }
 
+        private void updateBarChartTest(int[] selectedArray)
+        {
+            chart1.Series["Data"].Points.Clear();
+            int placement = 0;
+            foreach (int point in selectedArray)
+            {
+                this.chart1.Series["Data"].Points.AddXY(placement, point);
+                placement += 1;
+            }
+        }
+
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             trackbarValueLabel.Text = trackBar1.Value.ToString();
         }
 
-        public void InsertionSort(int[] intArray)
+        public async void InsertionSort(int[] intArray)
         {
 
             Form1 testObject = new Form1();
@@ -73,15 +90,18 @@ namespace AlgoVisualizer
                     intArray[j] = intArray[j - 1];
                     intArray[j - 1] = placeHolder;
                     j--;
-                    testObject.updateBarChart();
-                    testObject.UpdateLabel();
-                    // run testTimer_Tick();
-                    testTimer.Start();
-                    
 
+                    chart1.Series["Data"].Points.Clear();
+                    int placement = 0;
+                    foreach (int point in intArray)
+                    {
+                        this.chart1.Series["Data"].Points.AddXY(placement, point);
+                        placement += 1;
+                    }
 
-
-
+                    await Task.Delay(100);
+                    Console.WriteLine("Test");
+                    testFormScope.Text = j.ToString();
                 }
                 i++;
             }
@@ -100,7 +120,7 @@ namespace AlgoVisualizer
                 switch (algorithmBox.SelectedItem.ToString())
                 {
                     case "Insertion Sort":
-                        Sorting.Algorithms.InsertionSort(_dataSet);
+                        InsertionSort(_dataSet);
                         break;
                     case "Bubble Sort":
                         Sorting.Algorithms.BubbleSort(_dataSet);
@@ -126,10 +146,6 @@ namespace AlgoVisualizer
                 }
                 UpdateLabel();
             }
-
-
-            // Clears the chart and then post the new array to the chart.
-            updateBarChart();
         }
 
         // Generates the array and links it to the chart for visualization.
@@ -167,10 +183,6 @@ namespace AlgoVisualizer
 
             UpdateLabel();
         }
-
-        // Test to change the color of a spot in an array. This will
-        // allow us to highlight arrays values that are currently being
-        // analyzed and swapped later.
     }
 
     public class NumberGenerator
@@ -187,6 +199,7 @@ namespace AlgoVisualizer
         }
     }
 }
+
 
 
 namespace Sorting

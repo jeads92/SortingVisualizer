@@ -29,10 +29,9 @@ namespace AlgoVisualizer
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.trackbarValueLabel = new System.Windows.Forms.Label();
@@ -42,7 +41,7 @@ namespace AlgoVisualizer
             this.createArray = new System.Windows.Forms.Button();
             this.algorithmBox = new System.Windows.Forms.ListBox();
             this.indexSwapsLabel = new System.Windows.Forms.Label();
-            this.testTimer = new System.Windows.Forms.Timer(this.components);
+            this.testFormScope = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -50,16 +49,16 @@ namespace AlgoVisualizer
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(16, 12);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Data";
-            this.chart1.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Data";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(445, 395);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
@@ -129,21 +128,14 @@ namespace AlgoVisualizer
             this.algorithmBox.ItemHeight = 15;
             this.algorithmBox.Items.AddRange(new object[] {
             "Insertion Sort",
-            "Selection Sort",
             "Bubble Sort",
             "Merge Sort",
             "Quick Sort",
             "Heap Sort",
-            "Radix Sort",
-            "Bucket Sort",
-            "Bogo Sort",
-            "Tree Sort",
-            "Comb Sort",
-            "Shell Sort Counting Sort",
             "Cocktail Shaker Sort"});
             this.algorithmBox.Location = new System.Drawing.Point(722, 12);
             this.algorithmBox.Name = "algorithmBox";
-            this.algorithmBox.Size = new System.Drawing.Size(146, 214);
+            this.algorithmBox.Size = new System.Drawing.Size(146, 109);
             this.algorithmBox.TabIndex = 12;
             // 
             // indexSwapsLabel
@@ -155,14 +147,20 @@ namespace AlgoVisualizer
             this.indexSwapsLabel.TabIndex = 13;
             this.indexSwapsLabel.Text = "Index Swaps:";
             // 
-            // testTimer
+            // testFormScope
             // 
-            this.testTimer.Interval = 1000;
+            this.testFormScope.AutoSize = true;
+            this.testFormScope.Location = new System.Drawing.Point(651, 562);
+            this.testFormScope.Name = "testFormScope";
+            this.testFormScope.Size = new System.Drawing.Size(41, 15);
+            this.testFormScope.TabIndex = 14;
+            this.testFormScope.Text = "label1";
             // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(992, 618);
+            this.Controls.Add(this.testFormScope);
             this.Controls.Add(this.indexSwapsLabel);
             this.Controls.Add(this.algorithmBox);
             this.Controls.Add(this.createArray);
@@ -194,7 +192,7 @@ namespace AlgoVisualizer
         private System.Windows.Forms.Button createArray;
         private System.Windows.Forms.ListBox algorithmBox;
         private System.Windows.Forms.Label indexSwapsLabel;
-        private System.Windows.Forms.Timer testTimer;
+        private System.Windows.Forms.Label testFormScope;
     }
 }
 
