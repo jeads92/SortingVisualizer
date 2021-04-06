@@ -40,7 +40,7 @@ namespace AlgoVisualizer
             this.intTestLabel = new System.Windows.Forms.Label();
             this.algorithmBox = new System.Windows.Forms.ListBox();
             this.indexSwapsLabel = new System.Windows.Forms.Label();
-            this.testFormScope = new System.Windows.Forms.Label();
+            this.clearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -136,20 +136,20 @@ namespace AlgoVisualizer
             this.indexSwapsLabel.TabIndex = 13;
             this.indexSwapsLabel.Text = "Index Swaps:";
             // 
-            // testFormScope
+            // clearButton
             // 
-            this.testFormScope.AutoSize = true;
-            this.testFormScope.Location = new System.Drawing.Point(651, 562);
-            this.testFormScope.Name = "testFormScope";
-            this.testFormScope.Size = new System.Drawing.Size(41, 15);
-            this.testFormScope.TabIndex = 14;
-            this.testFormScope.Text = "label1";
+            this.clearButton.Location = new System.Drawing.Point(722, 562);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 15;
+            this.clearButton.Text = "Restart";
+            this.clearButton.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(992, 618);
-            this.Controls.Add(this.testFormScope);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.indexSwapsLabel);
             this.Controls.Add(this.algorithmBox);
             this.Controls.Add(this.intTestLabel);
@@ -179,7 +179,7 @@ namespace AlgoVisualizer
         private System.Windows.Forms.Label intTestLabel;
         private System.Windows.Forms.ListBox algorithmBox;
         private System.Windows.Forms.Label indexSwapsLabel;
-        private System.Windows.Forms.Label testFormScope;
+        private System.Windows.Forms.Button clearButton;
     }
 }
 

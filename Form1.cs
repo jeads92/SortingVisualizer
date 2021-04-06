@@ -13,7 +13,6 @@ namespace AlgoVisualizer
 {
     public partial class Form1 : Form
     {
-        static int[] _dataSet = new int[100];
         // Initializes size of the array.
         public int arraySize;
 
@@ -22,13 +21,7 @@ namespace AlgoVisualizer
             InitializeComponent();
         }
 
-        async Task PutTaskDelay()
-        {
-            await Task.Delay(1000);
-        }
-
-
-        private void UpdateLabel(int[] selectedArray)
+        public void UpdateLabel(int[] selectedArray)
         {
             // Adds the array to a label for the user to see.
             string arrayText = "";
@@ -48,7 +41,7 @@ namespace AlgoVisualizer
         }
 
 
-        private void updateBarChart(int[] selectedArray)
+        public void updateBarChart(int[] selectedArray)
         {
             chart1.Series["Data"].Points.Clear();
             int placement = 0;
@@ -66,8 +59,6 @@ namespace AlgoVisualizer
 
         public async void InsertionSort(int[] intArray)
         {
-
-            Form1 testObject = new Form1();
             int i = 1;
             int j = 1;
             int placeHolder = 1;
@@ -83,15 +74,146 @@ namespace AlgoVisualizer
                     updateBarChart(intArray);
                     UpdateLabel(intArray);
                     await Task.Delay(100);
-                    testFormScope.Text = j.ToString();
                 }
                 i++;
             }
         }
 
+        public async void BubbleSort(int[] intArray)
+        {
+            int n = intArray.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (intArray[j] > intArray[j + 1])
+                    {
+                        int placeHolder = intArray[j];
+                        intArray[j] = intArray[j + 1];
+                        intArray[j + 1] = placeHolder;
+                        updateBarChart(intArray);
+                        UpdateLabel(intArray);
+                        await Task.Delay(100);
+                    }
+
+                }
+            }
+        }
+
+        public async void CocktailSort(int[] intArray)
+        {
+            bool swapped = true;
+            int start = 0;
+            int end = intArray.Length;
+
+            while (swapped == true)
+            {
+                swapped = false;
+
+                for (int i = start; i < end - 1; ++i)
+                {
+                    if (intArray[i] > intArray[i + 1])
+                    {
+                        int placeHolder = intArray[i];
+                        intArray[i] = intArray[i + 1];
+                        intArray[i + 1] = placeHolder;
+                        swapped = true;
+                        updateBarChart(intArray);
+                        UpdateLabel(intArray);
+                        await Task.Delay(100);
+                    }
+                }
+
+                if (swapped == false)
+                    break;
+                swapped = false;
+                end = end - 1;
+
+                for (int i = end - 1; i >= start; i--)
+                {
+                    if (intArray[i] > intArray[i + 1])
+                    {
+                        int temp = intArray[i];
+                        intArray[i] = intArray[i + 1];
+                        intArray[i + 1] = temp;
+                        swapped = true;
+                        updateBarChart(intArray);
+                        UpdateLabel(intArray);
+                        await Task.Delay(100);
+                    }
+                }
+                start = start + 1;
+            }
+        }
+
+        public async void heapSort(int[] intArray)
+        {
+            int n = intArray.Length;
+
+            // This builds the heap and rearranges the array.
+            // n / 2 - 1 focuses on heapifying all nodes except the leaf nodes.
+            for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                heapify(intArray, n, i);
+                updateBarChart(intArray);
+                UpdateLabel(intArray);
+                await Task.Delay(100);
+            }
+
+
+            // This extracts an element from the heap.
+            for (int i = n - 1; i > 0; i--)
+            {
+                // This moves the current root to end.
+                int temp = intArray[0];
+                intArray[0] = intArray[i];
+                intArray[i] = temp;
+                updateBarChart(intArray);
+                UpdateLabel(intArray);
+                await Task.Delay(100);
+
+                // This calls max heapify on the reduced heap.
+                heapify(intArray, i, 0);
+            }
+        }
+
+        // To heapify a subtree with node i as the root
+        // n = size of the heap.
+        void heapify(int[] arr, int n, int i)
+        {
+            int largestNode = i; // Initialize largest as root
+            int left = 2 * i + 1; // left = 2*i + 1
+            int right = 2 * i + 2; // right = 2*i + 2
+
+            // Replaces the largest value as the left node.
+            if (left < n && arr[left] > arr[largestNode])
+                largestNode = left;
+
+            // Replaces the largest value as the right node.
+            if (right < n && arr[right] > arr[largestNode])
+                largestNode = right;
+
+            // This updates the value for the largest node
+            // if there was a swap with one of the child nodes.
+            if (largestNode != i)
+            {
+                int swap = arr[i];
+                arr[i] = arr[largestNode];
+                arr[largestNode] = swap;
+
+                // Recursively heapify any sub trees that
+                // underwent a change.
+                heapify(arr, n, largestNode);
+            }
+        }
+
+
+
+
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
+            //buttonSort.Enabled = false;
             arraySize = trackBar1.Value;
             NumberGenerator dataRandomizer = new NumberGenerator();
             int[] dataArray = dataRandomizer.Fill(arraySize);
@@ -109,10 +231,10 @@ namespace AlgoVisualizer
                         InsertionSort(dataArray);
                         break;
                     case "Bubble Sort":
-                        Sorting.Algorithms.BubbleSort(dataArray);
+                        BubbleSort(dataArray);
                         break;
                     case "Cocktail Shaker Sort":
-                        Sorting.Algorithms.CocktailSort(dataArray);
+                        CocktailSort(dataArray);
                         break;
                     case "Merge Sort":
                         Sorting.Algorithms.MergeSort MergeObject = new Sorting.Algorithms.MergeSort();
@@ -124,8 +246,7 @@ namespace AlgoVisualizer
                         Sorting.Algorithms.QuickSort.quickSort(dataArray, 0, arrayLength);
                         break;
                     case "Heap Sort":
-                        Sorting.Algorithms.HeapSort heapObject = new Sorting.Algorithms.HeapSort();
-                        heapObject.sort(dataArray);
+                        heapSort(dataArray);
                         break;
                     case null:
                         break;
@@ -146,7 +267,29 @@ namespace AlgoVisualizer
             }
             return dataArray;
         }
+
+        static bool checkSort(int[] data, int arrayLength)
+        {
+            // Checks if the array is of size 0 or 1.
+            if (arrayLength == 0 || arrayLength == 1)
+            {
+                return true;
+            }
+
+            for (int i = 1; i < arrayLength; i++)
+            {
+                // Returns false if the value to the 
+                // right of the index is less than
+                // our initial value that we are analyzing.
+                if (data[i] > data[i + 1])
+                    return false;
+            }
+            // Indicates a sorted array.
+            return true;
+        }
+
     }
+
 }
 
 
@@ -155,84 +298,6 @@ namespace Sorting
 {
     public class Algorithms
     {
-        public static void InsertionSort(int[] intArray)
-        {
-            int i = 1;
-            int j = 1;
-            int placeHolder = 1;
-            while (i < intArray.Length)
-            {
-                j = i;
-                while (j > 0 && intArray[j - 1] > intArray[j])
-                {
-                    placeHolder = intArray[j];
-                    intArray[j] = intArray[j - 1];
-                    intArray[j - 1] = placeHolder;
-                    j--;
-
-
-
-                }
-                i++;
-            }
-        }
-
-        public static void BubbleSort(int[] intArray)
-        {
-            int n = intArray.Length;
-            for (int i = 0; i < n - 1; i++)
-            {
-                for (int j = 0; j < n - i - 1; j++)
-                {
-                    if (intArray[j] > intArray[j + 1])
-                    {
-                        int placeHolder = intArray[j];
-                        intArray[j] = intArray[j + 1];
-                        intArray[j + 1] = placeHolder;
-                    }
-                }
-            }
-        }
-
-        public static void CocktailSort(int[] intArray)
-        {
-            bool swapped = true;
-            int start = 0;
-            int end = intArray.Length;
-
-            while (swapped == true)
-            {
-                swapped = false;
-
-                for (int i = start; i < end - 1; ++i)
-                {
-                    if (intArray[i] > intArray[i + 1])
-                    {
-                        int placeHolder = intArray[i];
-                        intArray[i] = intArray[i + 1];
-                        intArray[i + 1] = placeHolder;
-                        swapped = true;
-                    }
-                }
-
-                if (swapped == false)
-                    break;
-                swapped = false;
-                end = end - 1;
-
-                for (int i = end - 1; i >= start; i--)
-                {
-                    if (intArray[i] > intArray[i + 1])
-                    {
-                        int temp = intArray[i];
-                        intArray[i] = intArray[i + 1];
-                        intArray[i + 1] = temp;
-                        swapped = true;
-                    }
-                }
-                start = start + 1;
-            }
-        }
 
         public class MergeSort
         {
