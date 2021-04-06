@@ -109,23 +109,23 @@ namespace AlgoVisualizer
                         InsertionSort(dataArray);
                         break;
                     case "Bubble Sort":
-                        Sorting.Algorithms.BubbleSort(_dataSet);
+                        Sorting.Algorithms.BubbleSort(dataArray);
                         break;
                     case "Cocktail Shaker Sort":
-                        Sorting.Algorithms.CocktailSort(_dataSet);
+                        Sorting.Algorithms.CocktailSort(dataArray);
                         break;
                     case "Merge Sort":
                         Sorting.Algorithms.MergeSort MergeObject = new Sorting.Algorithms.MergeSort();
-                        MergeObject.sort(_dataSet, 0, _dataSet.Length - 1);
+                        MergeObject.sort(dataArray, 0, dataArray.Length - 1);
                         break;
                     case "Quick Sort":
                         Sorting.Algorithms.QuickSort quickObject = new Sorting.Algorithms.QuickSort();
-                        int arrayLength = _dataSet.Length - 1;
-                        Sorting.Algorithms.QuickSort.quickSort(_dataSet, 0, arrayLength);
+                        int arrayLength = dataArray.Length - 1;
+                        Sorting.Algorithms.QuickSort.quickSort(dataArray, 0, arrayLength);
                         break;
                     case "Heap Sort":
                         Sorting.Algorithms.HeapSort heapObject = new Sorting.Algorithms.HeapSort();
-                        heapObject.sort(_dataSet);
+                        heapObject.sort(dataArray);
                         break;
                     case null:
                         break;
