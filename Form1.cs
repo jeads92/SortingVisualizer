@@ -28,12 +28,12 @@ namespace AlgoVisualizer
         }
 
 
-        private void UpdateLabel()
+        private void UpdateLabel(int[] selectedArray)
         {
             // Adds the array to a label for the user to see.
             string arrayText = "";
             int newLineCount = 0;
-            foreach (int element in _dataSet)
+            foreach (int element in selectedArray)
             {
                 arrayText += element;
                 arrayText += ",";
@@ -47,18 +47,8 @@ namespace AlgoVisualizer
             intTestLabel.Text = arrayText;
         }
 
-        private void updateBarChart()
-        {
-            chart1.Series["Data"].Points.Clear();
-            int placement = 0;
-            foreach (int point in _dataSet)
-            {
-                this.chart1.Series["Data"].Points.AddXY(placement, point);
-                placement += 1;
-            }
-        }
 
-        private void updateBarChartTest(int[] selectedArray)
+        private void updateBarChart(int[] selectedArray)
         {
             chart1.Series["Data"].Points.Clear();
             int placement = 0;
@@ -90,17 +80,9 @@ namespace AlgoVisualizer
                     intArray[j] = intArray[j - 1];
                     intArray[j - 1] = placeHolder;
                     j--;
-
-                    chart1.Series["Data"].Points.Clear();
-                    int placement = 0;
-                    foreach (int point in intArray)
-                    {
-                        this.chart1.Series["Data"].Points.AddXY(placement, point);
-                        placement += 1;
-                    }
-
+                    updateBarChart(intArray);
+                    UpdateLabel(intArray);
                     await Task.Delay(100);
-                    Console.WriteLine("Test");
                     testFormScope.Text = j.ToString();
                 }
                 i++;
@@ -110,6 +92,10 @@ namespace AlgoVisualizer
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
+            arraySize = trackBar1.Value;
+            NumberGenerator dataRandomizer = new NumberGenerator();
+            int[] dataArray = dataRandomizer.Fill(arraySize);
+            updateBarChart(dataArray);
             // Tests to see if the selection box has been selected.
             if (algorithmBox.SelectedItem is null)
             {
@@ -120,7 +106,7 @@ namespace AlgoVisualizer
                 switch (algorithmBox.SelectedItem.ToString())
                 {
                     case "Insertion Sort":
-                        InsertionSort(_dataSet);
+                        InsertionSort(dataArray);
                         break;
                     case "Bubble Sort":
                         Sorting.Algorithms.BubbleSort(_dataSet);
@@ -144,44 +130,7 @@ namespace AlgoVisualizer
                     case null:
                         break;
                 }
-                UpdateLabel();
             }
-        }
-
-        // Generates the array and links it to the chart for visualization.
-        private void createArray_Click(object sender, EventArgs e)
-        {
-            // The dataArray takes in the arraySize and returns an array
-            // which is used to populate the chart.
-            arraySize = trackBar1.Value;
-            NumberGenerator dataRandomizer = new NumberGenerator();
-            int[] dataArray = dataRandomizer.Fill(arraySize);
-
-            int replaceIndex = 0; // Could probably use for loop to write this in one line below.
-            foreach(int replacePoint in _dataSet)
-            {
-                _dataSet[replaceIndex] = 0;
-                replaceIndex += 1;
-            }
-
-            // updates the primary array with the randomly generated values.
-            int count = 0; // could use for loop to condense.
-            foreach(int point in dataArray)
-            {
-                _dataSet[count] = point;
-                count += 1;
-            }
-
-            // clears the chart and updates it with the new array.
-            chart1.Series["Data"].Points.Clear();
-            int placement = 0; // Replace with a for loop to reduce code lines.
-            foreach (int dataPoint in _dataSet)
-            {
-                this.chart1.Series["Data"].Points.AddXY(placement, dataPoint);
-                placement += 1;
-            }
-
-            UpdateLabel();
         }
     }
 

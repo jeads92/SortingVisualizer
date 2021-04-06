@@ -38,7 +38,6 @@ namespace AlgoVisualizer
             this.label2 = new System.Windows.Forms.Label();
             this.buttonSort = new System.Windows.Forms.Button();
             this.intTestLabel = new System.Windows.Forms.Label();
-            this.createArray = new System.Windows.Forms.Button();
             this.algorithmBox = new System.Windows.Forms.ListBox();
             this.indexSwapsLabel = new System.Windows.Forms.Label();
             this.testFormScope = new System.Windows.Forms.Label();
@@ -112,16 +111,6 @@ namespace AlgoVisualizer
             this.intTestLabel.TabIndex = 8;
             this.intTestLabel.Text = "Array Values";
             // 
-            // createArray
-            // 
-            this.createArray.Location = new System.Drawing.Point(630, 79);
-            this.createArray.Name = "createArray";
-            this.createArray.Size = new System.Drawing.Size(75, 23);
-            this.createArray.TabIndex = 9;
-            this.createArray.Text = "Create Array";
-            this.createArray.UseVisualStyleBackColor = true;
-            this.createArray.Click += new System.EventHandler(this.createArray_Click);
-            // 
             // algorithmBox
             // 
             this.algorithmBox.FormattingEnabled = true;
@@ -163,7 +152,6 @@ namespace AlgoVisualizer
             this.Controls.Add(this.testFormScope);
             this.Controls.Add(this.indexSwapsLabel);
             this.Controls.Add(this.algorithmBox);
-            this.Controls.Add(this.createArray);
             this.Controls.Add(this.intTestLabel);
             this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.label2);
@@ -189,7 +177,6 @@ namespace AlgoVisualizer
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonSort;
         private System.Windows.Forms.Label intTestLabel;
-        private System.Windows.Forms.Button createArray;
         private System.Windows.Forms.ListBox algorithmBox;
         private System.Windows.Forms.Label indexSwapsLabel;
         private System.Windows.Forms.Label testFormScope;
