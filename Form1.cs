@@ -158,8 +158,8 @@ namespace AlgoVisualizer
                 updateBarChart(intArray);
                 UpdateLabel(intArray);
                 await Task.Delay(100);
-            }
 
+            }
 
             // This extracts an element from the heap.
             for (int i = n - 1; i > 0; i--)
@@ -179,7 +179,7 @@ namespace AlgoVisualizer
 
         // To heapify a subtree with node i as the root
         // n = size of the heap.
-        void heapify(int[] arr, int n, int i)
+        public void heapify(int[] arr, int n, int i)
         {
             int largestNode = i; // Initialize largest as root
             int left = 2 * i + 1; // left = 2*i + 1
@@ -239,11 +239,13 @@ namespace AlgoVisualizer
                     case "Merge Sort":
                         Sorting.Algorithms.MergeSort MergeObject = new Sorting.Algorithms.MergeSort();
                         MergeObject.sort(dataArray, 0, dataArray.Length - 1);
+
                         break;
                     case "Quick Sort":
                         Sorting.Algorithms.QuickSort quickObject = new Sorting.Algorithms.QuickSort();
                         int arrayLength = dataArray.Length - 1;
                         Sorting.Algorithms.QuickSort.quickSort(dataArray, 0, arrayLength);
+                        updateBarChart(dataArray);
                         break;
                     case "Heap Sort":
                         heapSort(dataArray);
