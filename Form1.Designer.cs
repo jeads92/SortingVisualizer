@@ -29,9 +29,9 @@ namespace AlgoVisualizer
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.trackbarValueLabel = new System.Windows.Forms.Label();
@@ -40,7 +40,6 @@ namespace AlgoVisualizer
             this.intTestLabel = new System.Windows.Forms.Label();
             this.algorithmBox = new System.Windows.Forms.ListBox();
             this.indexSwapsLabel = new System.Windows.Forms.Label();
-            this.clearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -48,17 +47,17 @@ namespace AlgoVisualizer
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(16, 12);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Data";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(445, 395);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Data";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(577, 594);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
             // 
@@ -94,7 +93,7 @@ namespace AlgoVisualizer
             // 
             // buttonSort
             // 
-            this.buttonSort.Location = new System.Drawing.Point(630, 108);
+            this.buttonSort.Location = new System.Drawing.Point(756, 145);
             this.buttonSort.Name = "buttonSort";
             this.buttonSort.Size = new System.Drawing.Size(75, 23);
             this.buttonSort.TabIndex = 7;
@@ -105,7 +104,7 @@ namespace AlgoVisualizer
             // intTestLabel
             // 
             this.intTestLabel.AutoSize = true;
-            this.intTestLabel.Location = new System.Drawing.Point(367, 108);
+            this.intTestLabel.Location = new System.Drawing.Point(614, 304);
             this.intTestLabel.Name = "intTestLabel";
             this.intTestLabel.Size = new System.Drawing.Size(74, 15);
             this.intTestLabel.TabIndex = 8;
@@ -130,26 +129,16 @@ namespace AlgoVisualizer
             // indexSwapsLabel
             // 
             this.indexSwapsLabel.AutoSize = true;
-            this.indexSwapsLabel.Location = new System.Drawing.Point(470, 12);
+            this.indexSwapsLabel.Location = new System.Drawing.Point(753, 223);
             this.indexSwapsLabel.Name = "indexSwapsLabel";
             this.indexSwapsLabel.Size = new System.Drawing.Size(80, 15);
             this.indexSwapsLabel.TabIndex = 13;
             this.indexSwapsLabel.Text = "Index Swaps:";
             // 
-            // clearButton
-            // 
-            this.clearButton.Location = new System.Drawing.Point(722, 562);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(75, 23);
-            this.clearButton.TabIndex = 15;
-            this.clearButton.Text = "Restart";
-            this.clearButton.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(992, 618);
-            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.indexSwapsLabel);
             this.Controls.Add(this.algorithmBox);
             this.Controls.Add(this.intTestLabel);
@@ -179,7 +168,6 @@ namespace AlgoVisualizer
         private System.Windows.Forms.Label intTestLabel;
         private System.Windows.Forms.ListBox algorithmBox;
         private System.Windows.Forms.Label indexSwapsLabel;
-        private System.Windows.Forms.Button clearButton;
     }
 }
 
