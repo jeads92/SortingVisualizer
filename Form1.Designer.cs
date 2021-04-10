@@ -29,9 +29,9 @@ namespace AlgoVisualizer
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.trackbarValueLabel = new System.Windows.Forms.Label();
@@ -40,23 +40,27 @@ namespace AlgoVisualizer
             this.intTestLabel = new System.Windows.Forms.Label();
             this.algorithmBox = new System.Windows.Forms.ListBox();
             this.indexSwapsLabel = new System.Windows.Forms.Label();
+            this.sortSpeedBar = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.speedLblTest = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sortSpeedBar)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(16, 12);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Data";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Data";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(577, 594);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
@@ -135,10 +139,42 @@ namespace AlgoVisualizer
             this.indexSwapsLabel.TabIndex = 13;
             this.indexSwapsLabel.Text = "Index Swaps:";
             // 
+            // sortSpeedBar
+            // 
+            this.sortSpeedBar.Location = new System.Drawing.Point(872, 560);
+            this.sortSpeedBar.Maximum = 990;
+            this.sortSpeedBar.Minimum = 10;
+            this.sortSpeedBar.Name = "sortSpeedBar";
+            this.sortSpeedBar.Size = new System.Drawing.Size(110, 45);
+            this.sortSpeedBar.TabIndex = 14;
+            this.sortSpeedBar.TickFrequency = 100;
+            this.sortSpeedBar.Value = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(884, 542);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 15);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Sorting Speed";
+            // 
+            // speedLblTest
+            // 
+            this.speedLblTest.AutoSize = true;
+            this.speedLblTest.Location = new System.Drawing.Point(783, 560);
+            this.speedLblTest.Name = "speedLblTest";
+            this.speedLblTest.Size = new System.Drawing.Size(41, 15);
+            this.speedLblTest.TabIndex = 16;
+            this.speedLblTest.Text = "label3";
+            // 
             // Form1
             // 
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(992, 618);
+            this.Controls.Add(this.speedLblTest);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.sortSpeedBar);
             this.Controls.Add(this.indexSwapsLabel);
             this.Controls.Add(this.algorithmBox);
             this.Controls.Add(this.intTestLabel);
@@ -152,6 +188,7 @@ namespace AlgoVisualizer
             this.Name = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sortSpeedBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,6 +205,9 @@ namespace AlgoVisualizer
         private System.Windows.Forms.Label intTestLabel;
         private System.Windows.Forms.ListBox algorithmBox;
         private System.Windows.Forms.Label indexSwapsLabel;
+        private System.Windows.Forms.TrackBar sortSpeedBar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label speedLblTest;
     }
 }
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Threading;
 
 namespace AlgoVisualizer
 {
@@ -38,6 +39,13 @@ namespace AlgoVisualizer
                 }
             }
             intTestLabel.Text = arrayText;
+        }
+
+        public async void UpdateAll(int[] array)
+        {
+            updateBarChart(array);
+            UpdateLabel(array);
+            await Task.Delay(100);
         }
 
 
@@ -73,7 +81,7 @@ namespace AlgoVisualizer
                     j--;
                     updateBarChart(intArray);
                     UpdateLabel(intArray);
-                    await Task.Delay(100);
+                    await Task.Delay(sortSpeedBar.Value);
                 }
                 i++;
             }
@@ -93,7 +101,7 @@ namespace AlgoVisualizer
                         intArray[j + 1] = placeHolder;
                         updateBarChart(intArray);
                         UpdateLabel(intArray);
-                        await Task.Delay(100);
+                        await Task.Delay(sortSpeedBar.Value);
                     }
 
                 }
@@ -120,7 +128,7 @@ namespace AlgoVisualizer
                         swapped = true;
                         updateBarChart(intArray);
                         UpdateLabel(intArray);
-                        await Task.Delay(100);
+                        await Task.Delay(sortSpeedBar.Value);
                     }
                 }
 
@@ -139,7 +147,7 @@ namespace AlgoVisualizer
                         swapped = true;
                         updateBarChart(intArray);
                         UpdateLabel(intArray);
-                        await Task.Delay(100);
+                        await Task.Delay(sortSpeedBar.Value);
                     }
                 }
                 start = start + 1;
@@ -157,7 +165,7 @@ namespace AlgoVisualizer
                 heapify(intArray, n, i);
                 updateBarChart(intArray);
                 UpdateLabel(intArray);
-                await Task.Delay(100);
+                await Task.Delay(sortSpeedBar.Value);
 
             }
 
@@ -170,7 +178,7 @@ namespace AlgoVisualizer
                 intArray[i] = temp;
                 updateBarChart(intArray);
                 UpdateLabel(intArray);
-                await Task.Delay(100);
+                await Task.Delay(sortSpeedBar.Value);
 
                 // This calls max heapify on the reduced heap.
                 heapify(intArray, i, 0);
@@ -207,9 +215,69 @@ namespace AlgoVisualizer
             }
         }
 
+        public void swap(int[] arr, int i, int j)
+        {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
 
+        /* This function takes last element as a pivot, places
+        the pivot element at its correct position in sorted
+        array, and places all smaller (smaller than pivot)
+        to left of pivot and all greater elements to right
+        of pivot */
+        public int partition(int[] arr, int low, int high)
+        {
+            // pivot
+            int pivot = arr[high];
 
+            // Index of smaller element and
+            // indicates the right position
+            // of pivot found so far
+            int i = (low - 1);
 
+            for (int j = low; j <= high - 1; j++)
+            {
+
+                // If current element is smaller
+                // than the pivot
+                if (arr[j] < pivot)
+                {
+
+                    // Increment index of
+                    // smaller element
+                    i++;
+                    swap(arr, i, j);
+                }
+            }
+            swap(arr, i + 1, high);
+            return (i + 1);
+        }
+
+        /* The main function that implements QuickSort
+        arr[] --> Array to be sorted,
+        low --> Starting index,
+        high --> Ending index
+        */
+        public async void quickSort(int[] arr, int low, int high)
+        {
+            if (low < high)
+            {
+
+                // pi is partitioning index, arr[p]
+                // is now at right place
+                int pi = partition(arr, low, high);
+
+                // Separately sort elements before
+                // partition and after partition
+                quickSort(arr, low, pi - 1);
+                quickSort(arr, pi + 1, high);
+                updateBarChart(arr);
+                UpdateLabel(arr);
+                await Task.Delay(sortSpeedBar.Value);
+            }
+        }
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
@@ -239,13 +307,10 @@ namespace AlgoVisualizer
                     case "Merge Sort":
                         Sorting.Algorithms.MergeSort MergeObject = new Sorting.Algorithms.MergeSort();
                         MergeObject.sort(dataArray, 0, dataArray.Length - 1);
-
                         break;
                     case "Quick Sort":
-                        Sorting.Algorithms.QuickSort quickObject = new Sorting.Algorithms.QuickSort();
                         int arrayLength = dataArray.Length - 1;
-                        Sorting.Algorithms.QuickSort.quickSort(dataArray, 0, arrayLength);
-                        updateBarChart(dataArray);
+                        quickSort(dataArray, 0, arrayLength);
                         break;
                     case "Heap Sort":
                         heapSort(dataArray);
