@@ -43,6 +43,7 @@ namespace AlgoVisualizer
             this.sortSpeedBar = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.speedLblTest = new System.Windows.Forms.Label();
+            this.stopButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sortSpeedBar)).BeginInit();
@@ -97,7 +98,7 @@ namespace AlgoVisualizer
             // 
             // buttonSort
             // 
-            this.buttonSort.Location = new System.Drawing.Point(756, 145);
+            this.buttonSort.Location = new System.Drawing.Point(756, 136);
             this.buttonSort.Name = "buttonSort";
             this.buttonSort.Size = new System.Drawing.Size(75, 23);
             this.buttonSort.TabIndex = 7;
@@ -168,10 +169,22 @@ namespace AlgoVisualizer
             this.speedLblTest.TabIndex = 16;
             this.speedLblTest.Text = "label3";
             // 
+            // stopButton
+            // 
+            this.stopButton.Location = new System.Drawing.Point(722, 174);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(146, 23);
+            this.stopButton.TabIndex = 17;
+            this.stopButton.Text = "Stop Sorting";
+            this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+            // 
             // Form1
             // 
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(992, 618);
+            this.Controls.Add(this.stopButton);
             this.Controls.Add(this.speedLblTest);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.sortSpeedBar);
@@ -186,6 +199,7 @@ namespace AlgoVisualizer
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sortSpeedBar)).EndInit();
@@ -208,6 +222,7 @@ namespace AlgoVisualizer
         private System.Windows.Forms.TrackBar sortSpeedBar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label speedLblTest;
+        private System.Windows.Forms.Button stopButton;
     }
 }
 

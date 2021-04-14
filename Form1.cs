@@ -16,6 +16,7 @@ namespace AlgoVisualizer
     {
         // Initializes size of the array.
         public int arraySize;
+        public bool stopStatus = false;
 
         public Form1()
         {
@@ -49,6 +50,7 @@ namespace AlgoVisualizer
         }
 
 
+
         public void updateBarChart(int[] selectedArray)
         {
             chart1.Series["Data"].Points.Clear();
@@ -70,7 +72,7 @@ namespace AlgoVisualizer
             int i = 1;
             int j = 1;
             int placeHolder = 1;
-            while (i < intArray.Length)
+            while (i < intArray.Length && stopStatus == false)
             {
                 j = i;
                 while (j > 0 && intArray[j - 1] > intArray[j])
@@ -282,6 +284,7 @@ namespace AlgoVisualizer
         private void buttonSort_Click(object sender, EventArgs e)
         {
             //buttonSort.Enabled = false;
+            stopStatus = false;
             arraySize = trackBar1.Value;
             NumberGenerator dataRandomizer = new NumberGenerator();
             int[] dataArray = dataRandomizer.Fill(arraySize);
@@ -319,6 +322,11 @@ namespace AlgoVisualizer
                         break;
                 }
             }
+        }
+
+        private void stopButton_Click(object sender, EventArgs e)
+        {
+            stopStatus = true;
         }
     }
 
