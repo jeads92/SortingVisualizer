@@ -37,14 +37,11 @@ namespace AlgoVisualizer
             this.trackbarValueLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonSort = new System.Windows.Forms.Button();
-            this.intTestLabel = new System.Windows.Forms.Label();
             this.algorithmBox = new System.Windows.Forms.ListBox();
-            this.indexSwapsLabel = new System.Windows.Forms.Label();
             this.sortSpeedBar = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.speedLblTest = new System.Windows.Forms.Label();
             this.stopButton = new System.Windows.Forms.Button();
-            this.statusLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sortSpeedBar)).BeginInit();
@@ -57,19 +54,19 @@ namespace AlgoVisualizer
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(16, 12);
+            this.chart1.Location = new System.Drawing.Point(12, 73);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Data";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(577, 594);
+            this.chart1.Size = new System.Drawing.Size(683, 425);
             this.chart1.TabIndex = 3;
             this.chart1.Text = "chart1";
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(613, 28);
+            this.trackBar1.Location = new System.Drawing.Point(723, 232);
             this.trackBar1.Maximum = 100;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
@@ -82,7 +79,7 @@ namespace AlgoVisualizer
             // trackbarValueLabel
             // 
             this.trackbarValueLabel.AutoSize = true;
-            this.trackbarValueLabel.Location = new System.Drawing.Point(674, 12);
+            this.trackbarValueLabel.Location = new System.Drawing.Point(798, 214);
             this.trackbarValueLabel.Name = "trackbarValueLabel";
             this.trackbarValueLabel.Size = new System.Drawing.Size(14, 15);
             this.trackbarValueLabel.TabIndex = 5;
@@ -91,7 +88,7 @@ namespace AlgoVisualizer
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(614, 12);
+            this.label2.Location = new System.Drawing.Point(729, 214);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 15);
             this.label2.TabIndex = 6;
@@ -99,22 +96,13 @@ namespace AlgoVisualizer
             // 
             // buttonSort
             // 
-            this.buttonSort.Location = new System.Drawing.Point(756, 136);
+            this.buttonSort.Location = new System.Drawing.Point(701, 385);
             this.buttonSort.Name = "buttonSort";
-            this.buttonSort.Size = new System.Drawing.Size(75, 23);
+            this.buttonSort.Size = new System.Drawing.Size(146, 23);
             this.buttonSort.TabIndex = 7;
             this.buttonSort.Text = "Start Sort";
             this.buttonSort.UseVisualStyleBackColor = true;
             this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
-            // 
-            // intTestLabel
-            // 
-            this.intTestLabel.AutoSize = true;
-            this.intTestLabel.Location = new System.Drawing.Point(614, 304);
-            this.intTestLabel.Name = "intTestLabel";
-            this.intTestLabel.Size = new System.Drawing.Size(74, 15);
-            this.intTestLabel.TabIndex = 8;
-            this.intTestLabel.Text = "Array Values";
             // 
             // algorithmBox
             // 
@@ -127,23 +115,14 @@ namespace AlgoVisualizer
             "Quick Sort",
             "Heap Sort",
             "Cocktail Shaker Sort"});
-            this.algorithmBox.Location = new System.Drawing.Point(722, 12);
+            this.algorithmBox.Location = new System.Drawing.Point(707, 73);
             this.algorithmBox.Name = "algorithmBox";
-            this.algorithmBox.Size = new System.Drawing.Size(146, 109);
+            this.algorithmBox.Size = new System.Drawing.Size(146, 94);
             this.algorithmBox.TabIndex = 12;
-            // 
-            // indexSwapsLabel
-            // 
-            this.indexSwapsLabel.AutoSize = true;
-            this.indexSwapsLabel.Location = new System.Drawing.Point(751, 235);
-            this.indexSwapsLabel.Name = "indexSwapsLabel";
-            this.indexSwapsLabel.Size = new System.Drawing.Size(80, 15);
-            this.indexSwapsLabel.TabIndex = 13;
-            this.indexSwapsLabel.Text = "Index Swaps:";
             // 
             // sortSpeedBar
             // 
-            this.sortSpeedBar.Location = new System.Drawing.Point(872, 560);
+            this.sortSpeedBar.Location = new System.Drawing.Point(717, 318);
             this.sortSpeedBar.Maximum = 990;
             this.sortSpeedBar.Minimum = 10;
             this.sortSpeedBar.Name = "sortSpeedBar";
@@ -155,7 +134,7 @@ namespace AlgoVisualizer
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(884, 542);
+            this.label1.Location = new System.Drawing.Point(729, 300);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 15);
             this.label1.TabIndex = 15;
@@ -171,36 +150,24 @@ namespace AlgoVisualizer
             // 
             // stopButton
             // 
-            this.stopButton.Location = new System.Drawing.Point(722, 174);
+            this.stopButton.Location = new System.Drawing.Point(701, 439);
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(146, 23);
+            this.stopButton.Size = new System.Drawing.Size(146, 59);
             this.stopButton.TabIndex = 17;
-            this.stopButton.Text = "Stop Sorting";
+            this.stopButton.Text = "Stop Sorting or Re-enable \'Start Sort\' Button";
             this.stopButton.UseVisualStyleBackColor = true;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(756, 207);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(76, 15);
-            this.statusLabel.TabIndex = 18;
-            this.statusLabel.Text = "Stop Status: ";
             // 
             // Form1
             // 
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(992, 618);
-            this.Controls.Add(this.statusLabel);
+            this.ClientSize = new System.Drawing.Size(869, 510);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.speedLblTest);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.sortSpeedBar);
-            this.Controls.Add(this.indexSwapsLabel);
             this.Controls.Add(this.algorithmBox);
-            this.Controls.Add(this.intTestLabel);
             this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.trackbarValueLabel);
@@ -226,14 +193,11 @@ namespace AlgoVisualizer
         private System.Windows.Forms.Label trackbarValueLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonSort;
-        private System.Windows.Forms.Label intTestLabel;
         private System.Windows.Forms.ListBox algorithmBox;
-        private System.Windows.Forms.Label indexSwapsLabel;
         private System.Windows.Forms.TrackBar sortSpeedBar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label speedLblTest;
         private System.Windows.Forms.Button stopButton;
-        private System.Windows.Forms.Label statusLabel;
     }
 }
 

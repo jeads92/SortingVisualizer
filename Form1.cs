@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
-using System.Threading;
 
 namespace AlgoVisualizer
 {
@@ -21,32 +13,14 @@ namespace AlgoVisualizer
         public Form1()
         {
             InitializeComponent();
-            statusLabel.Text = $"Stop Status {stopStatus}";
+  
         }
 
-        public void UpdateLabel(int[] selectedArray)
-        {
-            // Adds the array to a label for the user to see.
-            string arrayText = "";
-            int newLineCount = 0;
-            foreach (int element in selectedArray)
-            {
-                arrayText += element;
-                arrayText += ",";
-                newLineCount += 1;
-                if (newLineCount == 10)
-                {
-                    arrayText += '\n';
-                    newLineCount = 0;
-                }
-            }
-            intTestLabel.Text = arrayText;
-        }
+       
 
         public async void UpdateAll(int[] array)
         {
             updateBarChart(array);
-            UpdateLabel(array);
             await Task.Delay(100);
         }
 
@@ -83,7 +57,7 @@ namespace AlgoVisualizer
                     intArray[j - 1] = placeHolder;
                     j--;
                     updateBarChart(intArray);
-                    UpdateLabel(intArray);
+                    
                     await Task.Delay(sortSpeedBar.Value);
                 }
                 i++;
@@ -103,7 +77,7 @@ namespace AlgoVisualizer
                         intArray[j] = intArray[j + 1];
                         intArray[j + 1] = placeHolder;
                         updateBarChart(intArray);
-                        UpdateLabel(intArray);
+                        
                         await Task.Delay(sortSpeedBar.Value);
                     }
                 }
@@ -129,7 +103,7 @@ namespace AlgoVisualizer
                         intArray[i + 1] = placeHolder;
                         swapped = true;
                         updateBarChart(intArray);
-                        UpdateLabel(intArray);
+                        
                         await Task.Delay(sortSpeedBar.Value);
                     }
                 }
@@ -148,7 +122,7 @@ namespace AlgoVisualizer
                         intArray[i + 1] = temp;
                         swapped = true;
                         updateBarChart(intArray);
-                        UpdateLabel(intArray);
+                        
                         await Task.Delay(sortSpeedBar.Value);
                     }
                 }
@@ -166,7 +140,7 @@ namespace AlgoVisualizer
             {
                 heapify(intArray, n, i);
                 updateBarChart(intArray);
-                UpdateLabel(intArray);
+                
                 await Task.Delay(sortSpeedBar.Value);
 
             }
@@ -179,7 +153,7 @@ namespace AlgoVisualizer
                 intArray[0] = intArray[i];
                 intArray[i] = temp;
                 updateBarChart(intArray);
-                UpdateLabel(intArray);
+                
                 await Task.Delay(sortSpeedBar.Value);
 
                 // This calls max heapify on the reduced heap.
@@ -276,16 +250,14 @@ namespace AlgoVisualizer
                 quickSort(arr, low, pi - 1);
                 quickSort(arr, pi + 1, high);
                 updateBarChart(arr);
-                UpdateLabel(arr);
                 await Task.Delay(sortSpeedBar.Value);
             }
         }
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
-            //buttonSort.Enabled = false;
+            buttonSort.Enabled = false;
             stopStatus = false;
-            statusLabel.Text = $"Stop Status {stopStatus}";
             arraySize = trackBar1.Value;
             NumberGenerator dataRandomizer = new NumberGenerator();
             int[] dataArray = dataRandomizer.Fill(arraySize);
@@ -328,7 +300,7 @@ namespace AlgoVisualizer
         private void stopButton_Click(object sender, EventArgs e)
         {
             stopStatus = true;
-            statusLabel.Text = $"Stop Status {stopStatus}";
+            buttonSort.Enabled = true;
         }
     }
 
