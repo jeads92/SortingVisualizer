@@ -21,6 +21,7 @@ namespace AlgoVisualizer
         public Form1()
         {
             InitializeComponent();
+            statusLabel.Text = $"Stop Status {stopStatus}";
         }
 
         public void UpdateLabel(int[] selectedArray)
@@ -96,7 +97,7 @@ namespace AlgoVisualizer
             {
                 for (int j = 0; j < n - i - 1; j++)
                 {
-                    if (intArray[j] > intArray[j + 1])
+                    if (intArray[j] > intArray[j + 1] && stopStatus == false)
                     {
                         int placeHolder = intArray[j];
                         intArray[j] = intArray[j + 1];
@@ -105,7 +106,6 @@ namespace AlgoVisualizer
                         UpdateLabel(intArray);
                         await Task.Delay(sortSpeedBar.Value);
                     }
-
                 }
             }
         }
@@ -122,7 +122,7 @@ namespace AlgoVisualizer
 
                 for (int i = start; i < end - 1; ++i)
                 {
-                    if (intArray[i] > intArray[i + 1])
+                    if (intArray[i] > intArray[i + 1] & stopStatus == false)
                     {
                         int placeHolder = intArray[i];
                         intArray[i] = intArray[i + 1];
@@ -141,7 +141,7 @@ namespace AlgoVisualizer
 
                 for (int i = end - 1; i >= start; i--)
                 {
-                    if (intArray[i] > intArray[i + 1])
+                    if (intArray[i] > intArray[i + 1] && stopStatus == false)
                     {
                         int temp = intArray[i];
                         intArray[i] = intArray[i + 1];
@@ -285,6 +285,7 @@ namespace AlgoVisualizer
         {
             //buttonSort.Enabled = false;
             stopStatus = false;
+            statusLabel.Text = $"Stop Status {stopStatus}";
             arraySize = trackBar1.Value;
             NumberGenerator dataRandomizer = new NumberGenerator();
             int[] dataArray = dataRandomizer.Fill(arraySize);
@@ -327,6 +328,7 @@ namespace AlgoVisualizer
         private void stopButton_Click(object sender, EventArgs e)
         {
             stopStatus = true;
+            statusLabel.Text = $"Stop Status {stopStatus}";
         }
     }
 

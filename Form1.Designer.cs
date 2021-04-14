@@ -44,6 +44,7 @@ namespace AlgoVisualizer
             this.label1 = new System.Windows.Forms.Label();
             this.speedLblTest = new System.Windows.Forms.Label();
             this.stopButton = new System.Windows.Forms.Button();
+            this.statusLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sortSpeedBar)).BeginInit();
@@ -134,7 +135,7 @@ namespace AlgoVisualizer
             // indexSwapsLabel
             // 
             this.indexSwapsLabel.AutoSize = true;
-            this.indexSwapsLabel.Location = new System.Drawing.Point(753, 223);
+            this.indexSwapsLabel.Location = new System.Drawing.Point(751, 235);
             this.indexSwapsLabel.Name = "indexSwapsLabel";
             this.indexSwapsLabel.Size = new System.Drawing.Size(80, 15);
             this.indexSwapsLabel.TabIndex = 13;
@@ -165,9 +166,8 @@ namespace AlgoVisualizer
             this.speedLblTest.AutoSize = true;
             this.speedLblTest.Location = new System.Drawing.Point(783, 560);
             this.speedLblTest.Name = "speedLblTest";
-            this.speedLblTest.Size = new System.Drawing.Size(41, 15);
+            this.speedLblTest.Size = new System.Drawing.Size(0, 15);
             this.speedLblTest.TabIndex = 16;
-            this.speedLblTest.Text = "label3";
             // 
             // stopButton
             // 
@@ -179,11 +179,21 @@ namespace AlgoVisualizer
             this.stopButton.UseVisualStyleBackColor = true;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(756, 207);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(76, 15);
+            this.statusLabel.TabIndex = 18;
+            this.statusLabel.Text = "Stop Status: ";
+            // 
             // Form1
             // 
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(992, 618);
+            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.speedLblTest);
             this.Controls.Add(this.label1);
@@ -223,6 +233,7 @@ namespace AlgoVisualizer
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label speedLblTest;
         private System.Windows.Forms.Button stopButton;
+        private System.Windows.Forms.Label statusLabel;
     }
 }
 
