@@ -353,57 +353,57 @@ namespace Sorting
             public void merge(int[] arr, int l, int m, int r)
             {
                 // Sizes of the two array that will be merged.
-                int arraySizeOne = m - l + 1;
-                int arraySizeTwo = r - m;
+                int n1 = m - l + 1;
+                int n2 = r - m;
 
                 // Temporary Arrays
-                int[] tempArrayOne = new int[arraySizeOne];
-                int[] tempArrayTwo = new int[arraySizeTwo];
-                int firstArrayIndex, secondArrayIndex;
+                int[] L = new int[n1];
+                int[] R = new int[n2];
+                int i, j;
 
                 // Copy data to temp arrays
-                for (firstArrayIndex = 0; firstArrayIndex < arraySizeOne; ++firstArrayIndex)
-                    tempArrayOne[firstArrayIndex] = arr[l + firstArrayIndex];
-                for (secondArrayIndex = 0; secondArrayIndex < arraySizeTwo; ++secondArrayIndex)
-                    tempArrayTwo[secondArrayIndex] = arr[m + 1 + secondArrayIndex];
+                for (i = 0; i < n1; ++i)
+                    L[i] = arr[l + i];
+                for (j = 0; j < n2; ++j)
+                    R[j] = arr[m + 1 + j];
 
                 // Merge the temp arrays
 
                 // Initial indexes of the sub arrays
-                firstArrayIndex = 0;
-                secondArrayIndex = 0;
+                i = 0;
+                j = 0;
 
                 // Initial index of merged subarry array
-                int subArrayIndex = l;
-                while (firstArrayIndex < arraySizeOne && secondArrayIndex < arraySizeTwo)
+                int k = l;
+                while (i < n1 && j < n2)
                 {
-                    if (tempArrayOne[firstArrayIndex] <= tempArrayTwo[secondArrayIndex])
+                    if (L[i] <= R[j])
                     {
-                        arr[subArrayIndex] = tempArrayOne[firstArrayIndex];
-                        firstArrayIndex++;
+                        arr[k] = L[i];
+                        i++;
                     }
                     else
                     {
-                        arr[subArrayIndex] = tempArrayTwo[secondArrayIndex];
-                        secondArrayIndex++;
+                        arr[k] = R[j];
+                        j++;
                     }
-                    subArrayIndex++;
+                    k++;
                 }
 
-                // Copy remaining elements tempArrayOne
-                while (firstArrayIndex < arraySizeOne)
+                // Copy remaining elements L
+                while (i < n1)
                 {
-                    arr[subArrayIndex] = tempArrayOne[firstArrayIndex];
-                    firstArrayIndex++;
-                    subArrayIndex++;
+                    arr[k] = L[i];
+                    i++;
+                    k++;
                 }
 
-                // Copy remaining elements tempArrayTwo
-                while (secondArrayIndex < arraySizeTwo)
+                // Copy remaining elements R
+                while (j < n2)
                 {
-                    arr[subArrayIndex] = tempArrayTwo[secondArrayIndex];
-                    secondArrayIndex++;
-                    subArrayIndex++;
+                    arr[k] = R[j];
+                    j++;
+                    k++;
                 }
             }
 
