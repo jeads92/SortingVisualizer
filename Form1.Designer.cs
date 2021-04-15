@@ -192,7 +192,6 @@ namespace AlgoVisualizer
 
         #endregion
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label trackbarValueLabel;
