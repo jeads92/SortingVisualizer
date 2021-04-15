@@ -98,10 +98,10 @@ namespace AlgoVisualizer
             int i = 1;
             int j = 1;
             int placeHolder = 1;
-            while (i < intArray.Length && _stopStatus == false)
+            while (i < intArray.Length)
             {
                 j = i;
-                while (j > 0 && intArray[j - 1] > intArray[j])
+                while (j > 0 && intArray[j - 1] > intArray[j] && _stopStatus == false)
                 {
                     placeHolder = intArray[j];
                     intArray[j] = intArray[j - 1];
