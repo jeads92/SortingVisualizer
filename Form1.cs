@@ -16,16 +16,6 @@ namespace AlgoVisualizer
   
         }
 
-       
-
-        public async void UpdateAll(int[] array)
-        {
-            updateBarChart(array);
-            await Task.Delay(100);
-        }
-
-
-
         public void updateBarChart(int[] selectedArray)
         {
             chart1.Series["Data"].Points.Clear();
@@ -57,7 +47,6 @@ namespace AlgoVisualizer
                     intArray[j - 1] = placeHolder;
                     j--;
                     updateBarChart(intArray);
-                    
                     await Task.Delay(sortSpeedBar.Value);
                 }
                 i++;
@@ -140,9 +129,8 @@ namespace AlgoVisualizer
             {
                 heapify(intArray, n, i);
                 updateBarChart(intArray);
-                
-                await Task.Delay(sortSpeedBar.Value);
 
+                await Task.Delay(sortSpeedBar.Value);
             }
 
             // This extracts an element from the heap.
@@ -153,7 +141,7 @@ namespace AlgoVisualizer
                 intArray[0] = intArray[i];
                 intArray[i] = temp;
                 updateBarChart(intArray);
-                
+
                 await Task.Delay(sortSpeedBar.Value);
 
                 // This calls max heapify on the reduced heap.
@@ -225,9 +213,11 @@ namespace AlgoVisualizer
                     // smaller element
                     i++;
                     swap(arr, i, j);
+                    testTimer.Start();
                 }
             }
             swap(arr, i + 1, high);
+            testTimer.Start();
             return (i + 1);
         }
 
@@ -301,6 +291,12 @@ namespace AlgoVisualizer
         {
             stopStatus = true;
             buttonSort.Enabled = true;
+        }
+
+        private void testTimer_Tick(object sender, EventArgs e)
+        {
+            Console.WriteLine("timer test");
+            testTimer.Stop();
         }
     }
 
