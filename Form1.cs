@@ -8,6 +8,11 @@ namespace AlgoVisualizer
     {
         // Initializes size of the array.
         public int _arraySize;
+        public int[] _currentArray;
+        public int[] _currentIteration;
+        public int _i = 1;
+        public int _j = 1;
+        public int _placeHolder = 1;
         public int _countdown = 1;
         public bool _stopStatus = false;
 
@@ -60,10 +65,6 @@ namespace AlgoVisualizer
                     case "Cocktail Shaker Sort":
                         CocktailSort(dataArray);
                         break;
-                    case "Quick Sort":
-                        int arrayLength = dataArray.Length - 1;
-                        QuickSort(dataArray, 0, arrayLength);
-                        break;
                     case null:
                         break;
                 }
@@ -76,21 +77,19 @@ namespace AlgoVisualizer
             buttonSort.Enabled = true;
         }
 
-        private void testTimer_Tick(object sender, EventArgs e)
-        {
-            if (_countdown > 0)
-            {
-                _countdown -= 1;
-                Console.WriteLine("_countdown subtractions");
-            }
-            else
-            {
-                testTimer.Stop();
-                Console.WriteLine("timer stopped");
-                _countdown = 1;
-                return;
-            }
 
+        public static bool IsSorted(int[] arr)
+        {
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i - 1] > arr[i])
+                {
+                    Console.WriteLine("is not sorted");
+                    return false;
+                }
+            }
+            Console.WriteLine("This is sorted");
+            return true;
         }
 
         public async void InsertionSort(int[] intArray)
@@ -180,68 +179,7 @@ namespace AlgoVisualizer
             }
         }
 
-        public void Swap(int[] arr, int i, int j)
-        {
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-            
-        }
-
-        /* This function takes last element as a pivot, places
-        the pivot element at its correct position in sorted
-        array, and places all smaller (smaller than pivot)
-        to left of pivot and all greater elements to right
-        of pivot */
-        public int Partition(int[] arr, int low, int high)
-        {
-            // pivot
-            int pivot = arr[high];
-
-            // Index of smaller element and
-            // indicates the right position
-            // of pivot found so far
-            int i = (low - 1);
-
-            for (int j = low; j <= high - 1; j++)
-            {
-
-                // If current element is smaller
-                // than the pivot
-                if (arr[j] < pivot)
-                {
-
-                    // Increment index of
-                    // smaller element
-                    i++;
-                    Swap(arr, i, j);
-                }
-            }
-            Swap(arr, i + 1, high);
-            return (i + 1);
-        }
-
-        /* The main function that implements QuickSort
-        arr[] --> Array to be sorted,
-        low --> Starting index,
-        high --> Ending index
-        */
-        public void QuickSort(int[] arr, int low, int high)
-        {
-            if (low < high)
-            {
-
-                // pi is partitioning index, arr[p]
-                // is now at right place
-                int pi = Partition(arr, low, high);
-
-                // Separately sort elements before
-                // partition and after partition
-                QuickSort(arr, low, pi - 1);
-                QuickSort(arr, pi + 1, high);
-                UpdateBarChart(arr);
-            }
-        }
+        
     }
 
     public class NumberGenerator
@@ -256,26 +194,5 @@ namespace AlgoVisualizer
             }
             return dataArray;
         }
-
-        static bool CheckSort(int[] data, int arrayLength)
-        {
-            // Checks if the array is of size 0 or 1.
-            if (arrayLength == 0 || arrayLength == 1)
-            {
-                return true;
-            }
-
-            for (int i = 1; i < arrayLength; i++)
-            {
-                // Returns false if the value to the 
-                // right of the index is less than
-                // our initial value that we are analyzing.
-                if (data[i] > data[i + 1])
-                    return false;
-            }
-            // Indicates a sorted array.
-            return true;
-        }
-
     }
 }
